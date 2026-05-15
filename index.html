@@ -30,7 +30,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
         </ul>
-        <a href="#contact" class="cta-button">Apply Now</a>
+        <button class="cta-button open-modal">Apply Now</button>
     </nav>
 
     <section class="hero" id="home">
@@ -299,6 +299,38 @@
             <a href="#" style="color: var(--text-dim); text-decoration: none;">Contact Us</a>
         </div>
     </footer>
+
+    <!-- Global Quick Apply Modal -->
+    <div class="modal-overlay" id="applyModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <span class="hero-tagline">Start Your Journey</span>
+                <h2>Quick Application</h2>
+                <p style="color: var(--text-dim);">Tell us your preference and we'll handle the rest.</p>
+            </div>
+            <form class="modal-form" id="global-apply-form">
+                <input type="text" placeholder="Your Full Name" required>
+                <input type="tel" placeholder="WhatsApp Number" required>
+                <select required>
+                    <option value="">Select Destination</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select required>
+                    <option value="">Select Intake</option>
+                    <option value="Sept-2025">September 2025</option>
+                    <option value="Feb-2026">February 2026</option>
+                    <option value="Sept-2026">September 2026</option>
+                </select>
+                <button type="submit" class="cta-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>

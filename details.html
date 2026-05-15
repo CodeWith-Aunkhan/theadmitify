@@ -151,43 +151,130 @@
         <div class="why-grid" id="reasons-grid">
             <!-- Dynamic Content -->
         </div>
-    </section>
+    </section>    <section class="apply-now" id="apply-section">
+        <div class="section-header">
+            <span class="hero-tagline">Start Your Application</span>
+            <h2>Take the First Step Today</h2>
+        </div>
 
-    <section class="apply-now">
         <div class="apply-card">
+            <!-- Left Side: Roadmap & Checklist -->
             <div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to Start Your <span
-                        style="color: var(--gold);">Journey?</span></h2>
-                <p style="color: var(--text-dim); margin-bottom: 2rem;">Our experts will guide you through the entire
-                    admission process, from document preparation to your first day at the university.</p>
-                <div style="display: flex; gap: 20px;">
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex: 1;">
-                        <h4 style="color: var(--gold);">98%</h4>
-                        <p style="font-size: 0.8rem;">Visa Success</p>
+                <h3 style="color: var(--gold); margin-bottom: 2rem;">Admission Roadmap</h3>
+                <div class="roadmap">
+                    <div style="display: flex; gap: 20px; margin-bottom: 25px;">
+                        <div style="width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-weight: 800; flex-shrink: 0;">1</div>
+                        <div>
+                            <h5 style="color: #fff; margin-bottom: 5px;">Fill Inquiry Form</h5>
+                            <p style="font-size: 0.9rem; color: var(--text-dim);">Submit your details for expert evaluation.</p>
+                        </div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex: 1;">
-                        <h4 style="color: var(--gold);">24/7</h4>
-                        <p style="font-size: 0.8rem;">Student Support</p>
+                    <div style="display: flex; gap: 20px; margin-bottom: 25px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); border: 1px solid var(--gold); font-weight: 800; flex-shrink: 0;">2</div>
+                        <div>
+                            <h5 style="color: #fff; margin-bottom: 5px;">Document Verification</h5>
+                            <p style="font-size: 0.9rem; color: var(--text-dim);">We check your 10th/12th & NEET eligibility.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 20px;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); border: 1px solid var(--gold); font-weight: 800; flex-shrink: 0;">3</div>
+                        <div>
+                            <h5 style="color: #fff; margin-bottom: 5px;">Get Admission Letter</h5>
+                            <p style="font-size: 0.9rem; color: var(--text-dim);">Receive official confirmation from the University.</p>
+                        </div>
                     </div>
                 </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(251, 191, 36, 0.05); border-radius: 20px; border: 1px dashed var(--gold);">
+                    <h4 style="color: var(--gold); margin-bottom: 1rem;">Required Documents</h4>
+                    <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem;">
+                        <li>✓ 10th Marksheet</li>
+                        <li>✓ 12th Marksheet</li>
+                        <li>✓ NEET Scorecard</li>
+                        <li>✓ Passport Copy</li>
+                        <li>✓ Photo ID Proof</li>
+                        <li>✓ Birth Certificate</li>
+                    </ul>
+                </div>
             </div>
+
+            <!-- Right Side: Form -->
             <div>
-                <form id="details-form" style="display: flex; flex-direction: column; gap: 15px;">
-                    <input type="text" placeholder="Your Name"
-                        style="padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff;">
-                    <input type="tel" placeholder="Phone Number"
-                        style="padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff;">
-                    <select
-                        style="padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 1); color: #fff;">
-                        <option value="">Select Intake</option>
-                        <option value="September">September 2024</option>
-                        <option value="February">February 2025</option>
-                    </select>
-                    <button type="submit" class="cta-button" style="width: 100%;">Book Free Consultation</button>
+                <form id="details-form" style="display: flex; flex-direction: column; gap: 20px; background: rgba(255,255,255,0.02); padding: 2.5rem; border-radius: 25px; border: 1px solid var(--glass-border);">
+                    <h3 style="margin-bottom: 1rem;">Free <span style="color: var(--gold);">Consultation</span></h3>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; color: var(--text-dim);">Full Name</label>
+                        <input type="text" id="student-name" required placeholder="Enter your full name" style="padding: 15px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; color: var(--text-dim);">WhatsApp Number</label>
+                        <input type="tel" id="student-phone" required placeholder="+91 00000 00000" style="padding: 15px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; color: var(--text-dim);">Preferred Intake</label>
+                        <select id="intake" required style="padding: 15px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 1); color: #fff;">
+                            <option value="">Select Intake</option>
+                            <option value="Sept-2025">September 2025</option>
+                            <option value="Feb-2026">February 2026</option>
+                            <option value="Sept-2026">September 2026</option>
+                            <option value="Feb-2027">February 2027</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%; padding: 18px; font-size: 1.1rem;">Submit Application</button>
+                    
+                    <div style="text-align: center; margin-top: 10px;">
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px;">- OR -</p>
+                        <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in Russia" id="whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 10px; color: #25D366; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid #25D366; padding: 12px; border-radius: 12px; transition: all 0.3s ease;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt="WA">
+                            Quick Apply via WhatsApp
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
+
+    <!-- Global Quick Apply Modal -->
+    <div class="modal-overlay" id="applyModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <span class="hero-tagline">Start Your Journey</span>
+                <h2>Quick Application</h2>
+                <p style="color: var(--text-dim);">Tell us your preference and we'll handle the rest.</p>
+            </div>
+            <form class="modal-form" id="global-apply-form">
+                <input type="text" placeholder="Your Full Name" required>
+                <input type="tel" placeholder="WhatsApp Number" required>
+                <select required>
+                    <option value="">Select Destination</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select required>
+                    <option value="">Select Intake</option>
+                    <option value="Sept-2025">September 2025</option>
+                    <option value="Feb-2026">February 2026</option>
+                    <option value="Sept-2026">September 2026</option>
+                </select>
+                <button type="submit" class="cta-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div id="success-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: var(--secondary); border: 1px solid var(--gold); padding: 3rem; border-radius: 30px; text-align: center; max-width: 500px; width: 100%;">
+            <div style="width: 80px; height: 80px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2.5rem; color: var(--secondary);">✓</div>
+            <h2 style="color: #fff; margin-bottom: 1rem;">Application Received!</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">Thank you for choosing TheAdmitify. Our MBBS expert will call you on your provided WhatsApp number within 24 hours.</p>
+            <button onclick="document.getElementById('success-modal').style.display='none'" class="cta-button">Got it!</button>
+        </div>
+    </div>
 
     <script>
         const countryData = {
@@ -254,7 +341,7 @@
         // Set Content
         document.getElementById('country-name').textContent = country;
         document.getElementById('country-title').textContent = country;
-
+        
         const data = countryData[country] || countryData['Russia'];
         document.getElementById('hero-bg').style.backgroundImage = `url('${data.bg}')`;
 
@@ -269,12 +356,20 @@
             reasonsGrid.appendChild(card);
         });
 
-        // Form Submission
+        // Update WhatsApp link dynamic message
+        const waBtn = document.getElementById('whatsapp-btn');
+        waBtn.href = `https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in ${country}. My name is:`;
+
+        // Form Submission Logic
         document.getElementById('details-form').onsubmit = (e) => {
             e.preventDefault();
-            alert(`Thank you! Our expert will contact you shortly for MBBS in ${country}.`);
+            document.getElementById('success-modal').style.display = 'flex';
+            // Clear form
+            e.target.reset();
         };
     </script>
+</body>
+</html>ipt>
 </body>
 
 </html>
