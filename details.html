@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study MBBS | TheAdmitify</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .details-hero {
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .details-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), var(--secondary));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .why-section {
+            padding: 100px 5%;
+            background: var(--secondary);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 50px;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .why-card h4 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: var(--secondary);
+        }
+
+        .apply-now {
+            text-align: center;
+            padding: 100px 5%;
+            background: linear-gradient(to top, rgba(251, 191, 36, 0.05), transparent);
+        }
+
+        .apply-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            text-align: left;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .apply-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body style="background: var(--secondary); color: var(--text-main);">
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <section class="details-hero" id="hero-bg">
+        <div class="hero-content">
+            <span class="hero-tagline" style="color: #fff;">Study Medicine in</span>
+            <h1 id="country-name">Country</h1>
+            <p style="font-size: 1.2rem; color: var(--text-dim);">Global medical education that transforms your career.
+                Excellence in every step.</p>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <div class="section-header">
+            <span class="hero-tagline">Why Choose This?</span>
+            <h2>MBBS in <span id="country-title" style="color: var(--gold);">Country</span></h2>
+            <p>Explore the unique advantages of pursuing medical education in this top-tier destination.</p>
+        </div>
+
+        <div class="why-grid" id="reasons-grid">
+            <!-- Dynamic Content -->
+        </div>
+    </section>
+
+    <section class="apply-now">
+        <div class="apply-card">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to Start Your <span
+                        style="color: var(--gold);">Journey?</span></h2>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">Our experts will guide you through the entire
+                    admission process, from document preparation to your first day at the university.</p>
+                <div style="display: flex; gap: 20px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex: 1;">
+                        <h4 style="color: var(--gold);">98%</h4>
+                        <p style="font-size: 0.8rem;">Visa Success</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex: 1;">
+                        <h4 style="color: var(--gold);">24/7</h4>
+                        <p style="font-size: 0.8rem;">Student Support</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form id="details-form" style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" placeholder="Your Name"
+                        style="padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff;">
+                    <input type="tel" placeholder="Phone Number"
+                        style="padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff;">
+                    <select
+                        style="padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(15, 23, 42, 1); color: #fff;">
+                        <option value="">Select Intake</option>
+                        <option value="September">September 2024</option>
+                        <option value="February">February 2025</option>
+                    </select>
+                    <button type="submit" class="cta-button" style="width: 100%;">Book Free Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const countryData = {
+            'Russia': {
+                bg: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=1200',
+                reasons: [
+                    { title: 'Affordable Tuition', desc: 'Study MBBS at nearly 1/3rd the cost compared to private colleges in India.' },
+                    { title: 'Global Recognition', desc: 'Degree recognized by MCI (NMC), WHO, and UNESCO, allowing you to practice worldwide.' },
+                    { title: 'No Entrance Exam', desc: 'Admission is based on NEET scores. No separate university entrance exams required.' },
+                    { title: 'MCI Coaching', desc: 'Most top Russian universities provide specialized coaching for NEXT/FMGE exams.' }
+                ]
+            },
+            'Georgia': {
+                bg: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&q=80&w=1200',
+                reasons: [
+                    { title: 'European Standard', desc: 'High-quality education following European standards with modern infrastructure.' },
+                    { title: 'Safe Environment', desc: 'Ranked as one of the safest countries for international students.' },
+                    { title: '100% Visa Success', desc: 'The visa process is transparent and highly successful for Indian students.' },
+                    { title: 'Global Exposure', desc: 'Students from over 50 countries study here, offering a truly global environment.' }
+                ]
+            },
+            'Kazakhstan': {
+                bg: 'https://dwq3yv87q1b43.cloudfront.net/public/blogs/fit-in/1200x675/Blog_20250421-2015241331-1745215049.jpg',
+                reasons: [
+                    { title: 'Quick Process', desc: 'Admission and visa process takes less than 30 days.' },
+                    { title: 'Indian Food', desc: 'Indian mess and hostels are available in almost every medical university.' },
+                    { title: 'Practical Focus', desc: 'Strong focus on clinical rotation in government hospitals from the 2nd year.' },
+                    { title: 'Connectivity', desc: 'Direct flights from Delhi make it very accessible for Indian students.' }
+                ]
+            },
+            'Uzbekistan': {
+                bg: 'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ4ypAgJAytVnMoY82C-chjtJ7CXmezfiXhoSW7fBNtto0qxm-7O4_-9tE8IaMvFHMFelZqsIw0bDgLrAMAhrrTH64&s=19',
+                reasons: [
+                    { title: 'Bilingual Education', desc: 'Classes are conducted in 100% English medium for international students.' },
+                    { title: 'Government Universities', desc: 'Study in prestigious state-funded universities with long historical excellence.' },
+                    { title: 'Low Living Cost', desc: 'The cost of living is very similar to India, making it budget-friendly.' },
+                    { title: 'Quality Faculty', desc: 'Experienced professors with international teaching backgrounds.' }
+                ]
+            },
+            'Egypt': {
+                bg: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=1200',
+                reasons: [
+                    { title: 'High Clinical Load', desc: 'Egypt has a huge population, providing immense practical exposure for medical students.' },
+                    { title: 'Oldest Universities', desc: 'Home to some of the world\'s oldest and most prestigious medical institutions.' },
+                    { title: 'NMC Approved', desc: 'Full compliance with latest NMC guidelines for Indian students.' },
+                    { title: 'Cultural Hub', desc: 'Rich history and warm culture that feels like home.' }
+                ]
+            },
+            'America': {
+                bg: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&q=80&w=1200',
+                reasons: [
+                    { title: 'World Class Tech', desc: 'Access to the most advanced medical technology and research facilities.' },
+                    { title: 'Highest Salaries', desc: 'Doctors in the US earn the highest salaries globally.' },
+                    { title: 'Residency Options', desc: 'Direct path to USMLE and residency in top-rated hospitals.' },
+                    { title: 'Global Prestige', desc: 'A medical degree from the USA is considered the gold standard worldwide.' }
+                ]
+            }
+        };
+
+        // Get URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const country = urlParams.get('country') || 'Russia';
+
+        // Set Content
+        document.getElementById('country-name').textContent = country;
+        document.getElementById('country-title').textContent = country;
+
+        const data = countryData[country] || countryData['Russia'];
+        document.getElementById('hero-bg').style.backgroundImage = `url('${data.bg}')`;
+
+        const reasonsGrid = document.getElementById('reasons-grid');
+        data.reasons.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'why-card';
+            card.innerHTML = `
+                <h4><span style="color: var(--gold);">★</span> ${item.title}</h4>
+                <p style="color: var(--text-dim); line-height: 1.6;">${item.desc}</p>
+            `;
+            reasonsGrid.appendChild(card);
+        });
+
+        // Form Submission
+        document.getElementById('details-form').onsubmit = (e) => {
+            e.preventDefault();
+            alert(`Thank you! Our expert will contact you shortly for MBBS in ${country}.`);
+        };
+    </script>
+</body>
+
+</html>
