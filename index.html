@@ -18,6 +18,21 @@
 </head>
 
 <body>
+    <!-- Premium Pre-loader -->
+    <div class="preloader" id="preloader">
+        <script>
+            if (sessionStorage.getItem('theadmitify_visited')) {
+                document.getElementById('preloader').style.display = 'none';
+            }
+        </script>
+        <div class="loader-logo">
+            <div class="loader-circle"></div>
+            <img src="assets/logo.png" alt="TheAdmitify Logo">
+        </div>
+        <div class="loader-text">TheAdmitify</div>
+    </div>
+
+    <div class="scroll-progress" id="progressBar"></div>
 
     <nav>
         <div class="logo-container">
@@ -26,11 +41,30 @@
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#finder">College Finder</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li class="dropdown">
+                <a href="#countries">Study Abroad <i data-lucide="chevron-down"
+                        style="width: 14px; height: 14px;"></i></a>
+                <div class="dropdown-content">
+                    <a href="details.html?country=Russia">MBBS in Russia</a>
+                    <a href="details.html?country=Georgia">MBBS in Georgia</a>
+                    <a href="details.html?country=Kazakhstan">MBBS in Kazakhstan</a>
+                    <a href="details.html?country=Uzbekistan">MBBS in Uzbekistan</a>
+                    <a href="details.html?country=Egypt">MBBS in Egypt</a>
+                    <a href="details.html?country=America">MBBS in America</a>
+                </div>
+            </li>
             <li><a href="#services">Services</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
         </ul>
-        <button class="cta-button open-modal">Apply Now</button>
+        <div class="nav-actions" style="display: flex; gap: 1rem; align-items: center;">
+            <button class="cta-button open-login"
+                style="background: transparent; border: 1px solid var(--glass-border);">Login</button>
+            <button class="cta-button open-modal">Apply Now</button>
+        </div>
+        <button class="menu-toggle" id="mobileMenuBtn">
+            <i data-lucide="menu"></i>
+        </button>
     </nav>
 
     <section class="hero" id="home">
@@ -39,10 +73,108 @@
             <h1>Your Career, <br><span style="color: var(--gold);">Our Guidance</span></h1>
             <p>Empowering students to reach their peak potential through expert admission counseling and personalized
                 career pathways.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
-                <a href="#finder" class="cta-button">Start Exploring</a>
-                <a href="#contact" class="cta-button"
-                    style="background: transparent; border: 1px solid var(--glass-border);">Talk to Experts</a>
+            <div class="hero-btns">
+                <a href="#countries" class="cta-button" style="display: flex; align-items: center; gap: 10px;">
+                    Start Exploring <i data-lucide="arrow-right" style="width: 18px;"></i>
+                </a>
+                <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I need expert guidance for MBBS admissions"
+                    class="cta-button secondary-btn" style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="headset" style="width: 18px;"></i> Talk to Experts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <!-- Left Side: Visual Experience -->
+            <div class="about-image-grid">
+                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=600"
+                    alt="Medical Consultation" class="about-img large">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600"
+                    alt="Global Students" class="about-img">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=600"
+                    alt="University Campus" class="about-img">
+            </div>
+
+            <!-- Right Side: Trust Content -->
+            <div class="about-content">
+                <span class="hero-tagline">More Than Just a Consultancy</span>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Built on <span
+                        style="color: var(--gold);">Trust</span>, Driven by <span
+                        style="color: var(--gold);">Ethics</span></h2>
+                <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 2rem;">At TheAdmitify, we understand
+                    that choosing a medical career abroad is a life-changing decision for both students and parents. We
+                    don't just process applications; we mentor dreams. Our mission is to provide transparent, direct,
+                    and honest guidance to the world's most prestigious medical universities.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>12+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Students Placed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Visa Success Rate</p>
+                    </div>
+                </div>
+
+                <div class="trust-features">
+                    <div class="feature-box">
+                        <div class="icon-wrap"><i data-lucide="shield-check"></i></div>
+                        <div>
+                            <h4 style="color: #fff;">No Hidden Fees</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Complete transparency from day one.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon-wrap"><i data-lucide="book-open"></i></div>
+                        <div>
+                            <h4 style="color: #fff;">NMC/NEXT Coaching</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Specialized coaching support for
+                                Indian licensing exams.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon-wrap"><i data-lucide="graduation-cap"></i></div>
+                        <div>
+                            <h4 style="color: #fff;">Student Mentorship</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">On-ground support until your
+                                graduation.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon-wrap"><i data-lucide="award"></i></div>
+                        <div>
+                            <h4 style="color: #fff;">WHO & NMC Approved</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Verified universities recognized
+                                worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Founder Quote -->
+                <div
+                    style="margin-top: 3rem; padding: 2rem; background: rgba(251, 191, 36, 0.05); border-radius: 20px; border-left: 4px solid var(--gold);">
+                    <p style="font-style: italic; color: #fff; margin-bottom: 1rem;">"Our goal is not just to send
+                        students abroad, but to ensure they return as successful, world-class doctors. We don't just
+                        facilitate admissions; we fulfill your dream of becoming a doctor as if it were our own family's
+                        dream. We treat every student as if they were part of our own family."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div
+                            style="width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-weight: 800;">
+                            CEO</div>
+                        <div>
+                            <h5 style="color: var(--gold); margin-bottom: 2px;">Director's Vision</h5>
+                            <p style="font-size: 0.75rem; color: var(--text-dim);">TheAdmitify Global Education</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -283,8 +415,32 @@
                 <p style="color: var(--text-dim); font-size: 0.9rem;">Finding and applying for merit-based and
                     need-based scholarships to fund your education.</p>
             </div>
-        </div>
     </section>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileOverlay"
+        style="position: fixed; inset: 0; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(20px); z-index: 3000; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
+        <button id="closeMobile"
+            style="position: absolute; top: 30px; right: 30px; background: none; border: none; color: #fff; font-size: 2rem;"><i
+                data-lucide="x"></i></button>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 2rem; font-size: 1.5rem;">
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About Us</a></li>
+            <li><a href="#countries" class="mobile-link">Study Abroad</a></li>
+            <li><a href="#services" class="mobile-link">Services</a></li>
+            <li><a href="#testimonials" class="mobile-link">Testimonials</a></li>
+        </ul>
+        <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 300px;">
+            <button class="cta-button open-login" style="width: 100%;">Login</button>
+            <button class="cta-button open-modal" style="width: 100%;">Apply Now</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to know more about MBBS abroad" class="whatsapp-float"
+        target="_blank">
+        <i data-lucide="phone"></i>
+    </a>
 
     <footer
         style="padding: 4rem 10%; background: var(--primary); border-top: 1px solid var(--glass-border); text-align: center;">
@@ -292,7 +448,9 @@
             <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
             <span class="logo-text">theadmitify</span>
         </div>
-        <p style="color: var(--text-dim); margin-bottom: 1rem;">© 2026 theadmitify.com - Reaching Your Peak.</p>
+        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify.com - Reaching Your Peak.</p>
+        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span
+                style="color: var(--gold); font-weight: 600;">Aun khan</span></p>
         <div style="display: flex; gap: 1.5rem; justify-content: center;">
             <a href="#" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a>
             <a href="#" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a>
@@ -329,6 +487,59 @@
                 </select>
                 <button type="submit" class="cta-button">Submit Application</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Student Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content"
+            style="max-width: 800px; display: grid; grid-template-columns: 1fr 1fr; padding: 0; overflow: hidden;">
+            <button class="close-modal" id="closeLogin" style="z-index: 10;">&times;</button>
+
+            <!-- Left Side: Image/Info -->
+            <div
+                style="background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600'); background-size: cover; background-position: center; padding: 3rem; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--glass-border);">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">Student Portal</h3>
+                <p style="font-size: 0.9rem; color: #fff; line-height: 1.6;">Access your admission documents, track visa
+                    progress, and connect with your dedicated consultant 24/7.</p>
+                <div style="margin-top: 2rem;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px; font-size: 0.8rem;">
+                        <span style="color: var(--gold);">★</span> Document Vault
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px; font-size: 0.8rem;">
+                        <span style="color: var(--gold);">★</span> Live Status Tracker
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div style="padding: 3rem;">
+                <h2 style="margin-bottom: 0.5rem; color: #fff;">Welcome Back</h2>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem;">Please enter your
+                    credentials to login.</p>
+
+                <form class="modal-form" id="login-form">
+                    <input type="email" placeholder="Student Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <div
+                        style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim);">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a href="#" style="color: var(--gold); text-decoration: none;">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Login to Portal</button>
+
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem;">- Or Continue With -
+                        </p>
+                        <button type="button"
+                            style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: all 0.3s ease;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_\" G\"_Logo.svg"
+                                width="18" alt="Google">
+                            Google Account
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

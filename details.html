@@ -129,6 +129,19 @@
 </head>
 
 <body style="background: var(--secondary); color: var(--text-main);">
+    <!-- Premium Pre-loader -->
+    <div class="preloader" id="preloader">
+        <script>
+            if (sessionStorage.getItem('theadmitify_visited')) {
+                document.getElementById('preloader').style.display = 'none';
+            }
+        </script>
+        <div class="loader-logo">
+            <div class="loader-circle"></div>
+            <img src="assets/logo.png" alt="TheAdmitify Logo">
+        </div>
+        <div class="loader-text">TheAdmitify</div>
+    </div>
 
     <a href="index.html" class="back-btn">← Back to Home</a>
 
@@ -233,6 +246,26 @@
             </div>
         </div>
     </section>
+
+    <footer style="padding: 4rem 10%; background: var(--primary); border-top: 1px solid var(--glass-border); text-align: center;">
+        <div class="logo-container" style="justify-content: center; margin-bottom: 2rem;">
+            <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
+            <span class="logo-text">theadmitify</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify.com - Reaching Your Peak.</p>
+        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span style="color: var(--gold); font-weight: 600;">Aun khan</span></p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center;">
+            <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Home</a>
+            <a href="index.html#about" style="color: var(--text-dim); text-decoration: none;">About Us</a>
+            <a href="index.html#countries" style="color: var(--text-dim); text-decoration: none;">Study Abroad</a>
+            <a href="index.html#services" style="color: var(--text-dim); text-decoration: none;">Services</a>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to know more about MBBS abroad" class="whatsapp-float" target="_blank">
+        <i data-lucide="phone"></i>
+    </a>
 
     <!-- Global Quick Apply Modal -->
     <div class="modal-overlay" id="applyModal">
