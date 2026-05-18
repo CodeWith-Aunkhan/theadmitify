@@ -49,13 +49,137 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === loginModal) loginModal.style.display = 'none';
   });
 
+  // Configurable Google Sheets Web App URL
+  // Setup instructions are provided in google_sheets_setup.md
+  const GOOGLE_SHEETS_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+  // Reusable Toast Notification Generator
+  function showNotification(message, type = 'success') {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    const icon = type === 'success' ? '✓' : '✗';
+    toast.innerHTML = `
+      <div class="toast-icon" style="font-weight: bold; font-size: 1.2rem; color: ${type === 'success' ? 'var(--gold)' : '#ef4444'}">${icon}</div>
+      <div class="toast-message">${message}</div>
+    `;
+
+    container.appendChild(toast);
+
+    // Trigger visual slide-in
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 10);
+
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        toast.remove();
+      }, 500);
+    }, 4000);
+  }
+
+  // Form Submission Handler Helper
+  async function handleFormSubmit(e, form, submitBtn, data, successMsg, modalToClose) {
+    e.preventDefault();
+    
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Processing Application...";
+    submitBtn.style.opacity = "0.7";
+
+    // Dynamic Source page info
+    data.sourcePage = window.location.pathname.split("/").pop() || "index.html";
+
+    // 1. Check if the URL is configured
+    if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.includes("YOUR_GOOGLE_SCRIPT_URL")) {
+      // Simulate success for pristine local deployment/testing
+      setTimeout(() => {
+        showNotification(successMsg, 'success');
+        form.reset();
+        if (modalToClose) modalToClose.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.style.opacity = "1";
+      }, 1200);
+      return;
+    }
+
+    // 2. Real Submission to Google Sheets
+    try {
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: "POST",
+        mode: "no-cors", // Essential for Google Apps Script redirects without CORS issues
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      showNotification(successMsg, 'success');
+      form.reset();
+      if (modalToClose) modalToClose.style.display = 'none';
+    } catch (error) {
+      console.error("Submission Error:", error);
+      showNotification("Submission failed. Please check connection or try again.", 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.style.opacity = "1";
+    }
+  }
+
   // Handle Global Form
   if (globalForm) {
     globalForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you! Your quick application has been received. Our team will contact you soon.');
-      modal.style.display = 'none';
-      globalForm.reset();
+      const name = document.getElementById('global-name').value;
+      const phone = document.getElementById('global-phone').value;
+      const destination = document.getElementById('global-destination').value;
+      const intake = document.getElementById('global-intake').value;
+      const submitBtn = globalForm.querySelector('button[type="submit"]');
+
+      const leadData = { name, phone, destination, intake };
+      handleFormSubmit(
+        e, 
+        globalForm, 
+        submitBtn, 
+        leadData, 
+        "Thank you! Your application has been successfully saved to our student sheet. We will contact you soon.", 
+        modal
+      );
+    });
+  }
+
+  // Handle Details Form
+  const detailsForm = document.getElementById('details-form');
+  if (detailsForm) {
+    detailsForm.addEventListener('submit', (e) => {
+      const name = document.getElementById('student-name').value;
+      const phone = document.getElementById('student-phone').value;
+      const intake = document.getElementById('intake').value;
+      const submitBtn = detailsForm.querySelector('button[type="submit"]');
+
+      // Get current country dynamically from URL query parameters (e.g., details.html?country=Russia)
+      const urlParams = new URLSearchParams(window.location.search);
+      const destination = urlParams.get('country') || "General Inquiry";
+
+      const leadData = { name, phone, destination, intake };
+      handleFormSubmit(
+        e, 
+        detailsForm, 
+        submitBtn, 
+        leadData, 
+        `Inquiry for MBBS in ${destination} received! Details successfully saved to our student sheet.`, 
+        null
+      );
     });
   }
 
@@ -63,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Login Successful! Redirecting to Student Dashboard (Demo)...');
+      showNotification('Login Successful! Redirecting to Student Dashboard (Demo)...', 'success');
       loginModal.style.display = 'none';
     });
   }

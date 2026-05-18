@@ -562,9 +562,9 @@
                 <p style="color: var(--text-dim);">Tell us your preference and we'll handle the rest.</p>
             </div>
             <form class="modal-form" id="global-apply-form">
-                <input type="text" placeholder="Your Full Name" required>
-                <input type="tel" placeholder="WhatsApp Number" required>
-                <select required>
+                <input type="text" id="global-name" placeholder="Your Full Name" required>
+                <input type="tel" id="global-phone" placeholder="WhatsApp Number" required>
+                <select id="global-destination" required>
                     <option value="">Select Destination</option>
                     <option value="Russia">Russia</option>
                     <option value="Georgia">Georgia</option>
@@ -573,7 +573,7 @@
                     <option value="Egypt">Egypt</option>
                     <option value="Other">Other</option>
                 </select>
-                <select required>
+                <select id="global-intake" required>
                     <option value="">Select Intake</option>
                     <option value="Sept-2025">September 2025</option>
                     <option value="Feb-2026">February 2026</option>
