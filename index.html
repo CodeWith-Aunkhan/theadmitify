@@ -37,7 +37,10 @@
     <nav>
         <div class="logo-container">
             <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
-            <span class="logo-text">theadmitify</span>
+            <div class="logo-text-group">
+                <span class="logo-text">theadmitify</span>
+                <span class="logo-tagline">REACHING YOUR PEAK</span>
+            </div>
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -110,15 +113,15 @@
 
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3>12+</h3>
+                        <span class="stat-number" data-target="12">0</span>
                         <p>Years of Excellence</p>
                     </div>
                     <div class="stat-item">
-                        <h3>500+</h3>
+                        <span class="stat-number" data-target="500">0</span>
                         <p>Students Placed</p>
                     </div>
                     <div class="stat-item">
-                        <h3>100%</h3>
+                        <span class="stat-number" data-target="100">0</span>
                         <p>Visa Success Rate</p>
                     </div>
                 </div>
@@ -174,6 +177,97 @@
                             <p style="font-size: 0.75rem; color: var(--text-dim);">TheAdmitify Global Education</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Experts Section -->
+    <section class="team-section" id="team">
+        <div class="section-header">
+            <span class="hero-tagline">The Minds Behind TheAdmitify</span>
+            <h2>Meet Our Expert Consultants</h2>
+            <p>Guided by specialists who have navigated the same path you're about to take.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
+                        alt="Consultant">
+                </div>
+                <h4>Mr. Rajesh Sharma</h4>
+                <p>Senior Admission Head</p>
+                <div class="team-social">
+                    <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
+                        alt="Consultant">
+                </div>
+                <h4>Ms. Priya Verma</h4>
+                <p>Foreign Relations Expert</p>
+                <div class="team-social">
+                    <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+                        alt="Consultant">
+                </div>
+                <h4>Dr. Amit Patel</h4>
+                <p>Medical Career Mentor</p>
+                <div class="team-social">
+                    <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="social-icon"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials Section -->
+    <section class="video-section">
+        <div class="section-header">
+            <span class="hero-tagline">Voices of Success</span>
+            <h2>Our Students' Journeys</h2>
+            <p>Real stories from real students studying at top universities worldwide.</p>
+        </div>
+        <div class="video-grid">
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600"
+                    alt="Student in Russia" class="video-thumbnail">
+                <div class="video-overlay">
+                    <div class="play-btn"><i data-lucide="play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4 style="color: #fff;">Siddharth's Life in Russia</h4>
+                    <p style="color: var(--gold); font-size: 0.8rem;">Kazan Federal University</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600"
+                    alt="Student in Georgia" class="video-thumbnail">
+                <div class="video-overlay">
+                    <div class="play-btn"><i data-lucide="play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4 style="color: #fff;">Ananya's Experience in Georgia</h4>
+                    <p style="color: var(--gold); font-size: 0.8rem;">Tbilisi State Medical University</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1525921429624-479b6a29d84c?auto=format&fit=crop&q=80&w=600"
+                    alt="Student in Egypt" class="video-thumbnail">
+                <div class="video-overlay">
+                    <div class="play-btn"><i data-lucide="play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4 style="color: #fff;">Rohit's Journey to Egypt</h4>
+                    <p style="color: var(--gold); font-size: 0.8rem;">Cairo University</p>
                 </div>
             </div>
         </div>
@@ -448,7 +542,7 @@
             <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
             <span class="logo-text">theadmitify</span>
         </div>
-        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify.com - Reaching Your Peak.</p>
+        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify - Reaching Your Peak.</p>
         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span
                 style="color: var(--gold); font-weight: 600;">Aun khan</span></p>
         <div style="display: flex; gap: 1.5rem; justify-content: center;">

@@ -125,6 +125,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Animated Counter Logic
+  const stats = document.querySelectorAll('.stat-number');
+  const speed = 200;
+
+  const observerOptions = {
+    threshold: 0.5
+  };
+
+  const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        target.innerText = "0"; // Reset before start
+        const updateCount = () => {
+          const targetValue = +target.getAttribute('data-target');
+          const count = +target.innerText;
+          const inc = targetValue / speed;
+
+          if (count < targetValue) {
+            target.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 1);
+          } else {
+            target.innerText = targetValue + (targetValue === 100 ? '%' : '+');
+          }
+        };
+        updateCount();
+      } else {
+        // Reset to 0 when scrolled out so it can animate again
+        entry.target.innerText = "0";
+      }
+    });
+  }, observerOptions);
+
+  stats.forEach(stat => statsObserver.observe(stat));
+
+  // Video Card Interactions
+  const videoCards = document.querySelectorAll('.video-card');
+  videoCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const title = card.querySelector('h4').innerText;
+      alert(`Playing: ${title}\n(In production, this would open a YouTube/Vimeo lightbox)`);
+    });
+  });
+
   // Preloader Logic (Premium Entry Only)
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
