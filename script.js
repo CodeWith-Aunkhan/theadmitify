@@ -15,13 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Global Modal Logic
   const modal = document.getElementById('applyModal');
-  const loginModal = document.getElementById('loginModal');
   const openBtns = document.querySelectorAll('.open-modal');
-  const openLoginBtns = document.querySelectorAll('.open-login');
   const closeBtn = document.querySelector('.close-modal');
-  const closeLoginBtn = document.getElementById('closeLogin');
   const globalForm = document.getElementById('global-apply-form');
-  const loginForm = document.getElementById('login-form');
 
   // Open Apply Modal
   openBtns.forEach(btn => {
@@ -31,27 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open Login Modal
-  openLoginBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (loginModal) loginModal.style.display = 'flex';
-    });
-  });
+
+
+  // Helper to handle modal close and trigger second popup
+  const handleModalClose = () => {
+    if (modal) modal.style.display = 'none';
+    let popupCount = parseInt(sessionStorage.getItem('quickApplyPopupCount') || '0');
+    if (popupCount === 1) {
+      schedulePopup();
+    }
+  };
 
   // Close Modals
-  if (closeBtn) closeBtn.addEventListener('click', () => { if (modal) modal.style.display = 'none'; });
-  if (closeLoginBtn) closeLoginBtn.addEventListener('click', () => { if (loginModal) loginModal.style.display = 'none'; });
+  if (closeBtn) closeBtn.addEventListener('click', handleModalClose);
 
   // Close on outside click
   window.addEventListener('click', (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-    if (e.target === loginModal) loginModal.style.display = 'none';
+    if (e.target === modal) handleModalClose();
   });
 
-  // Configurable Google Sheets Web App URL
-  // Setup instructions are provided in google_sheets_setup.md
-  const GOOGLE_SHEETS_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+  // Connect to Web3Forms Backend (Highly stable, no redirects/popups)
+  const WEB3FORMS_ACCESS_KEY = "3c468695-9bb3-4f27-b321-5f2d5e06aa5c";
 
   // Reusable Toast Notification Generator
   function showNotification(message, type = 'success') {
@@ -98,38 +94,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamic Source page info
     data.sourcePage = window.location.pathname.split("/").pop() || "index.html";
+    data.access_key = WEB3FORMS_ACCESS_KEY;
+    data.subject = `New Lead: ${data.name} for ${data.destination}`;
 
-    // 1. Check if the URL is configured
-    if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.includes("YOUR_GOOGLE_SCRIPT_URL")) {
-      // Simulate success for pristine local deployment/testing
+    // If key is not set, simulate success for testing
+    if (WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
       setTimeout(() => {
         showNotification(successMsg, 'success');
         form.reset();
+        sessionStorage.setItem('formSubmitted', 'true');
         if (modalToClose) modalToClose.style.display = 'none';
+        
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
         submitBtn.style.opacity = "1";
-      }, 1200);
+      }, 1000);
       return;
     }
 
-    // 2. Real Submission to Google Sheets
     try {
-      await fetch(GOOGLE_SHEETS_URL, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        mode: "no-cors", // Essential for Google Apps Script redirects without CORS issues
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify(data)
       });
 
-      showNotification(successMsg, 'success');
-      form.reset();
-      if (modalToClose) modalToClose.style.display = 'none';
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        showNotification(successMsg, 'success');
+        form.reset();
+        sessionStorage.setItem('formSubmitted', 'true');
+        if (modalToClose) modalToClose.style.display = 'none';
+        const successModal = document.getElementById('success-modal');
+        if (successModal) successModal.style.display = 'flex';
+      } else {
+        throw new Error(result.message || "Failed to submit lead");
+      }
+
     } catch (error) {
       console.error("Submission Error:", error);
-      showNotification("Submission failed. Please check connection or try again.", 'error');
+      showNotification("Submission failed. Please try again.", 'error');
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnText;
@@ -140,13 +148,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle Global Form
   if (globalForm) {
     globalForm.addEventListener('submit', (e) => {
-      const name = document.getElementById('global-name').value;
-      const phone = document.getElementById('global-phone').value;
+      const name = document.getElementById('global-name').value.trim();
+      const phone = document.getElementById('global-phone').value.trim();
+      const email = document.getElementById('global-email').value.trim();
       const destination = document.getElementById('global-destination').value;
-      const intake = document.getElementById('global-intake').value;
       const submitBtn = globalForm.querySelector('button[type="submit"]');
 
-      const leadData = { name, phone, destination, intake };
+      // Validation
+      if (!/^[a-zA-Z\s]{2,}$/.test(name)) {
+        e.preventDefault();
+        showNotification('Please enter a valid name (letters only).', 'error');
+        return;
+      }
+      if (!/^[0-9]{10}$/.test(phone)) {
+        e.preventDefault();
+        showNotification('Please enter a valid 10-digit phone number.', 'error');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      const leadData = { name, phone, email, destination };
       handleFormSubmit(
         e, 
         globalForm, 
@@ -162,16 +187,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const detailsForm = document.getElementById('details-form');
   if (detailsForm) {
     detailsForm.addEventListener('submit', (e) => {
-      const name = document.getElementById('student-name').value;
-      const phone = document.getElementById('student-phone').value;
-      const intake = document.getElementById('intake').value;
+      const name = document.getElementById('student-name').value.trim();
+      const phone = document.getElementById('student-phone').value.trim();
+      const email = document.getElementById('student-email').value.trim();
       const submitBtn = detailsForm.querySelector('button[type="submit"]');
+
+      // Validation
+      if (!/^[a-zA-Z\s]{2,}$/.test(name)) {
+        e.preventDefault();
+        showNotification('Please enter a valid name (letters only).', 'error');
+        return;
+      }
+      if (!/^[0-9]{10}$/.test(phone)) {
+        e.preventDefault();
+        showNotification('Please enter a valid 10-digit phone number.', 'error');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+      }
 
       // Get current country dynamically from URL query parameters (e.g., details.html?country=Russia)
       const urlParams = new URLSearchParams(window.location.search);
       const destination = urlParams.get('country') || "General Inquiry";
 
-      const leadData = { name, phone, destination, intake };
+      const leadData = { name, phone, email, destination };
       handleFormSubmit(
         e, 
         detailsForm, 
@@ -183,14 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Login Form (Demo)
-  if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      showNotification('Login Successful! Redirecting to Student Dashboard (Demo)...', 'success');
-      loginModal.style.display = 'none';
-    });
-  }
+
 
   // Scroll Progress Bar Logic
   window.addEventListener('scroll', () => {
@@ -318,4 +353,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
+
+  // Automatic Premium Popup Logic (Max 2 times)
+  function schedulePopup() {
+    let popupCount = parseInt(sessionStorage.getItem('quickApplyPopupCount') || '0');
+    if (popupCount < 2 && !sessionStorage.getItem('formSubmitted')) {
+      setTimeout(() => {
+        let currentCount = parseInt(sessionStorage.getItem('quickApplyPopupCount') || '0');
+        if (currentCount < 2 && !sessionStorage.getItem('formSubmitted') && modal && modal.style.display !== 'flex') {
+          modal.style.display = 'flex';
+          sessionStorage.setItem('quickApplyPopupCount', (currentCount + 1).toString());
+        }
+      }, 30000);
+    }
+  }
+
+  // Start the schedule
+  schedulePopup();
 });

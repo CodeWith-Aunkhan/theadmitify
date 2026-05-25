@@ -39,7 +39,7 @@
             <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
             <div class="logo-text-group">
                 <span class="logo-text">theadmitify</span>
-                <span class="logo-tagline">REACHING YOUR PEAK</span>
+                <span class="logo-tagline">Global Education</span>
             </div>
         </div>
         <ul class="nav-links">
@@ -61,8 +61,6 @@
             <li><a href="#testimonials">Testimonials</a></li>
         </ul>
         <div class="nav-actions" style="display: flex; gap: 1rem; align-items: center;">
-            <button class="cta-button open-login"
-                style="background: transparent; border: 1px solid var(--glass-border);">Login</button>
             <button class="cta-button open-modal">Apply Now</button>
         </div>
         <button class="menu-toggle" id="mobileMenuBtn">
@@ -509,6 +507,7 @@
                 <p style="color: var(--text-dim); font-size: 0.9rem;">Finding and applying for merit-based and
                     need-based scholarships to fund your education.</p>
             </div>
+        </div>
     </section>
 
     <!-- Mobile Menu Overlay -->
@@ -525,7 +524,6 @@
             <li><a href="#testimonials" class="mobile-link">Testimonials</a></li>
         </ul>
         <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 300px;">
-            <button class="cta-button open-login" style="width: 100%;">Login</button>
             <button class="cta-button open-modal" style="width: 100%;">Apply Now</button>
         </div>
     </div>
@@ -540,7 +538,10 @@
         style="padding: 4rem 10%; background: var(--primary); border-top: 1px solid var(--glass-border); text-align: center;">
         <div class="logo-container" style="justify-content: center; margin-bottom: 2rem;">
             <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
-            <span class="logo-text">theadmitify</span>
+            <div class="logo-text-group" style="text-align: left;">
+                <span class="logo-text">theadmitify</span>
+                <span class="logo-tagline">Global Education</span>
+            </div>
         </div>
         <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify - Reaching Your Peak.</p>
         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span
@@ -554,88 +555,62 @@
 
     <!-- Global Quick Apply Modal -->
     <div class="modal-overlay" id="applyModal">
-        <div class="modal-content">
-            <button class="close-modal">&times;</button>
-            <div class="modal-header">
-                <span class="hero-tagline">Start Your Journey</span>
-                <h2>Quick Application</h2>
-                <p style="color: var(--text-dim);">Tell us your preference and we'll handle the rest.</p>
-            </div>
-            <form class="modal-form" id="global-apply-form">
-                <input type="text" id="global-name" placeholder="Your Full Name" required>
-                <input type="tel" id="global-phone" placeholder="WhatsApp Number" required>
-                <select id="global-destination" required>
-                    <option value="">Select Destination</option>
-                    <option value="Russia">Russia</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Kazakhstan">Kazakhstan</option>
-                    <option value="Uzbekistan">Uzbekistan</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="Other">Other</option>
-                </select>
-                <select id="global-intake" required>
-                    <option value="">Select Intake</option>
-                    <option value="Sept-2025">September 2025</option>
-                    <option value="Feb-2026">February 2026</option>
-                    <option value="Sept-2026">September 2026</option>
-                </select>
-                <button type="submit" class="cta-button">Submit Application</button>
-            </form>
-        </div>
-    </div>
+        <div class="modal-content premium-modal">
+            <button class="close-modal" id="closeApplyModal" style="z-index: 10;">&times;</button>
 
-    <!-- Student Login Modal -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-content"
-            style="max-width: 800px; display: grid; grid-template-columns: 1fr 1fr; padding: 0; overflow: hidden;">
-            <button class="close-modal" id="closeLogin" style="z-index: 10;">&times;</button>
+            <!-- Left Side: Visual/Trust -->
+            <div class="modal-left">
+                <h3 style="color: #fff; font-size: 2rem; margin-bottom: 1rem; line-height: 1.2;">Your Medical Career
+                    Starts Here</h3>
+                <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 2rem;">Join
+                    500+ successful students studying in top universities worldwide. Get free expert guidance today.</p>
 
-            <!-- Left Side: Image/Info -->
-            <div
-                style="background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600'); background-size: cover; background-position: center; padding: 3rem; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--glass-border);">
-                <h3 style="color: var(--gold); margin-bottom: 1rem;">Student Portal</h3>
-                <p style="font-size: 0.9rem; color: #fff; line-height: 1.6;">Access your admission documents, track visa
-                    progress, and connect with your dedicated consultant 24/7.</p>
-                <div style="margin-top: 2rem;">
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px; font-size: 0.8rem;">
-                        <span style="color: var(--gold);">★</span> Document Vault
-                    </div>
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px; font-size: 0.8rem;">
-                        <span style="color: var(--gold);">★</span> Live Status Tracker
+                <div style="margin-top: auto;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="avatar-group">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
+                                alt="Student">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100"
+                                alt="Student">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100"
+                                alt="Student">
+                        </div>
+                        <span style="font-size: 0.8rem; color: #fff; font-weight: 600;">Trusted by Students</span>
                     </div>
                 </div>
             </div>
 
             <!-- Right Side: Form -->
-            <div style="padding: 3rem;">
-                <h2 style="margin-bottom: 0.5rem; color: #fff;">Welcome Back</h2>
-                <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem;">Please enter your
-                    credentials to login.</p>
-
-                <form class="modal-form" id="login-form">
-                    <input type="email" placeholder="Student Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <div
-                        style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim);">
-                        <label><input type="checkbox"> Remember me</label>
-                        <a href="#" style="color: var(--gold); text-decoration: none;">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="cta-button" style="width: 100%;">Login to Portal</button>
-
-                    <div style="text-align: center; margin-top: 1rem;">
-                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem;">- Or Continue With -
-                        </p>
-                        <button type="button"
-                            style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: all 0.3s ease;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_\" G\"_Logo.svg"
-                                width="18" alt="Google">
-                            Google Account
-                        </button>
-                    </div>
+            <div class="modal-right">
+                <div class="modal-header" style="text-align: left; margin-bottom: 1.5rem;">
+                    <span class="hero-tagline" style="font-size: 0.75rem;">Fast Track Admission</span>
+                    <h2 style="font-size: 2rem;">Quick Application</h2>
+                </div>
+                <form class="modal-form" id="global-apply-form">
+                    <input type="text" id="global-name" placeholder="Your Full Name" required
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
+                    <input type="tel" id="global-phone" placeholder="Your Phone Number" required
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10">
+                    <input type="email" id="global-email" placeholder="Your Email ID" required>
+                    <select id="global-destination" required>
+                        <option value="">Select Destination</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Get Free
+                        Consultation</button>
+                    <p style="text-align: center; font-size: 0.75rem; color: var(--text-dim); margin-top: 15px;">Your
+                        information is 100% secure with us.</p>
                 </form>
             </div>
         </div>
     </div>
+
+
 
     <script src="script.js"></script>
     <script>
