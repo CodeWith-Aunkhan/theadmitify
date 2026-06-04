@@ -275,11 +275,39 @@
             pointer-events: none;
         }
 
+        .doc-grid {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
         @media (max-width: 768px) {
             .apply-card {
                 grid-template-columns: 1fr;
                 padding: 2.5rem 1.5rem;
                 gap: 2rem;
+            }
+            .back-btn {
+                position: absolute !important;
+                top: 20px !important;
+                left: 20px !important;
+                padding: 8px 16px !important;
+                font-size: 0.9rem !important;
+            }
+            .why-section {
+                padding: 60px 5% !important;
+            }
+            .why-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            .why-card {
+                padding: 1.5rem !important;
+            }
+            .doc-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -375,8 +403,7 @@
                 <div
                     style="margin-top: 3rem; padding: 2rem; background: rgba(251, 191, 36, 0.05); border-radius: 20px; border: 1px dashed var(--gold);">
                     <h4 style="color: var(--gold); margin-bottom: 1rem;">Required Documents</h4>
-                    <ul
-                        style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem;">
+                    <ul class="doc-grid">
                         <li>✓ 10th Marksheet</li>
                         <li>✓ 12th Marksheet</li>
                         <li>✓ NEET Scorecard</li>
