@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TheAdmitify | Your Career, Our Guidance</title>
     <meta name="description"
         content="Premium admission consultancy services for students. Find the best colleges and courses with TheAdmitify.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -101,7 +101,7 @@
             <!-- Right Side: Trust Content -->
             <div class="about-content">
                 <span class="hero-tagline">More Than Just a Consultancy</span>
-                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Built on <span
+                <h2 class="about-title">Built on <span
                         style="color: var(--gold);">Trust</span>, Driven by <span
                         style="color: var(--gold);">Ethics</span></h2>
                 <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 2rem;">At TheAdmitify, we understand
@@ -160,19 +160,16 @@
                 </div>
 
                 <!-- Founder Quote -->
-                <div
-                    style="margin-top: 3rem; padding: 2rem; background: rgba(251, 191, 36, 0.05); border-radius: 20px; border-left: 4px solid var(--gold);">
-                    <p style="font-style: italic; color: #fff; margin-bottom: 1rem;">"Our goal is not just to send
+                <div class="founder-quote-box">
+                    <p class="founder-quote-text">"Our goal is not just to send
                         students abroad, but to ensure they return as successful, world-class doctors. We don't just
                         facilitate admissions; we fulfill your dream of becoming a doctor as if it were our own family's
                         dream. We treat every student as if they were part of our own family."</p>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <div
-                            style="width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-weight: 800;">
-                            CEO</div>
+                    <div class="founder-info">
+                        <div class="founder-badge">CEO</div>
                         <div>
-                            <h5 style="color: var(--gold); margin-bottom: 2px;">Director's Vision</h5>
-                            <p style="font-size: 0.75rem; color: var(--text-dim);">TheAdmitify Global Education</p>
+                            <h5 class="founder-name">Director's Vision</h5>
+                            <p class="founder-subtitle">TheAdmitify Global Education</p>
                         </div>
                     </div>
                 </div>
@@ -258,7 +255,7 @@
                 </div>
             </div>
             <div class="video-card">
-                <img src="https://images.unsplash.com/photo-1525921429624-479b6a29d84c?auto=format&fit=crop&q=80&w=600"
+                <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&q=80&w=600"
                     alt="Student in Egypt" class="video-thumbnail">
                 <div class="video-overlay">
                     <div class="play-btn"><i data-lucide="play"></i></div>
@@ -268,6 +265,12 @@
                     <p style="color: var(--gold); font-size: 0.8rem;">Cairo University</p>
                 </div>
             </div>
+        </div>
+        <!-- Carousel Indicators for Mobile -->
+        <div class="carousel-indicators mobile-only" id="videoIndicators">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </section>
 
@@ -423,7 +426,7 @@
             <a href="details.html?country=Bangladesh" class="country-card">
                 <div class="card-inner">
                     <div class="card-front"
-                        style="background-image: url('https://cgbdsydney.gov.bd/wp-content/uploads/2019/09/National-Memorial.jpg')">
+                        style="background-image: url('https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&q=80&w=600')">
                         <h3>BANGLADESH</h3>
                     </div>
                     <div class="card-back">
@@ -447,6 +450,15 @@
                 </div>
             </a>
         </div>
+        <!-- Carousel Indicators for Mobile -->
+        <div class="carousel-indicators mobile-only" id="countryIndicators">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
     </section>
 
     <section class="map-section">
@@ -456,54 +468,74 @@
             <p style="color: var(--text-dim);">Connecting students to top-tier universities across the globe.</p>
         </div>
 
-        <div class="map-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" class="map-bg"
-                alt="World Map">
+        <div class="map-wrapper">
+            <div class="map-container">
+                <!-- Animated Connection Paths -->
+                <svg class="map-connection-lines" viewBox="0 0 100 100" preserveAspectRatio="none"
+                    style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;">
+                    <defs>
+                        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2563eb" stop-opacity="0.2"/>
+                            <stop offset="50%" stop-color="#fbbf24" stop-opacity="0.8"/>
+                            <stop offset="100%" stop-color="#2563eb" stop-opacity="0.2"/>
+                        </linearGradient>
+                    </defs>
+                    <path class="flight-path" d="M 68 45 Q 66 35, 65 25" />
+                    <path class="flight-path" d="M 68 45 Q 40 25, 15 35" />
+                    <path class="flight-path" d="M 68 45 Q 60 40, 52 45" />
+                    <path class="flight-path" d="M 68 45 Q 69 43, 70 42" />
+                    <path class="flight-path" d="M 68 45 Q 77 50, 85 52" />
+                    <path class="flight-path" d="M 68 45 Q 64 40, 60 35" />
+                </svg>
 
-            <div class="marker russia">
-                <span class="marker-label">RUSSIA</span>
-            </div>
-            <div class="marker america">
-                <span class="marker-label">AMERICA</span>
-            </div>
-            <div class="marker egypt">
-                <span class="marker-label">EGYPT</span>
-            </div>
-            <div class="marker nepal">
-                <span class="marker-label">NEPAL</span>
-            </div>
-            <div class="marker philippines">
-                <span class="marker-label">PHILIPPINES</span>
-            </div>
-            <div class="marker uzbekistan">
-                <span class="marker-label">UZBEKISTAN</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" class="map-bg"
+                    alt="World Map">
+
+                <div class="marker russia">
+                    <span class="marker-label">RUSSIA</span>
+                </div>
+                <div class="marker america">
+                    <span class="marker-label">AMERICA</span>
+                </div>
+                <div class="marker egypt">
+                    <span class="marker-label">EGYPT</span>
+                </div>
+                <div class="marker nepal">
+                    <span class="marker-label">NEPAL</span>
+                </div>
+                <div class="marker philippines">
+                    <span class="marker-label">PHILIPPINES</span>
+                </div>
+                <div class="marker uzbekistan">
+                    <span class="marker-label">UZBEKISTAN</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="services" style="padding: 5rem 10%;">
-        <div style="text-align: center; margin-bottom: 4rem;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Our Services</h2>
+    <section id="services" class="services-section">
+        <div class="services-header">
+            <h2 class="services-title">Our Services</h2>
             <p style="color: var(--text-dim);">Comprehensive support for your academic journey.</p>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        <div class="services-grid">
             <div class="college-card">
-                <h4 style="color: var(--gold); margin-bottom: 1rem;">Career Counseling</h4>
+                <h4 class="service-title">Career Counseling</h4>
                 <p style="color: var(--text-dim); font-size: 0.9rem;">Expert guidance to help you choose the right
                     career path based on your interests and strengths.</p>
             </div>
             <div class="college-card">
-                <h4 style="color: var(--gold); margin-bottom: 1rem;">Admission Support</h4>
+                <h4 class="service-title">Admission Support</h4>
                 <p style="color: var(--text-dim); font-size: 0.9rem;">End-to-end assistance with application forms,
                     essays, and documentation for top universities.</p>
             </div>
             <div class="college-card">
-                <h4 style="color: var(--gold); margin-bottom: 1rem;">Visa Assistance</h4>
+                <h4 class="service-title">Visa Assistance</h4>
                 <p style="color: var(--text-dim); font-size: 0.9rem;">Simplifying the complex visa process with expert
                     documentation and interview preparation.</p>
             </div>
             <div class="college-card">
-                <h4 style="color: var(--gold); margin-bottom: 1rem;">Scholarship Help</h4>
+                <h4 class="service-title">Scholarship Help</h4>
                 <p style="color: var(--text-dim); font-size: 0.9rem;">Finding and applying for merit-based and
                     need-based scholarships to fund your education.</p>
             </div>
@@ -528,17 +560,50 @@
         </div>
     </div>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to know more about MBBS abroad" class="whatsapp-float"
-        target="_blank">
-        <i data-lucide="phone"></i>
-    </a>
+    <!-- Floating Bottom Tab Bar (Mobile Only) -->
+    <div class="mobile-tab-bar">
+        <a href="#home" class="tab-item active"><i data-lucide="home"></i><span>Home</span></a>
+        <a href="#countries" class="tab-item"><i data-lucide="globe"></i><span>Countries</span></a>
+        <a href="#services" class="tab-item"><i data-lucide="briefcase"></i><span>Services</span></a>
+        <a href="#" class="tab-item open-modal"><i data-lucide="send"></i><span>Apply</span></a>
+    </div>
 
-    <footer
-        style="padding: 4rem 10%; background: var(--primary); border-top: 1px solid var(--glass-border); text-align: center;">
-        <div class="logo-container" style="justify-content: center; margin-bottom: 2rem;">
+    <!-- Floating Action Menu -->
+    <div class="fab-menu-container" id="fabMenuContainer">
+        <button class="fab-main-btn" id="fabMainBtn">
+            <i data-lucide="phone"></i>
+        </button>
+        <div class="fab-options">
+            <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to know more about MBBS abroad" class="fab-opt-btn whatsapp" target="_blank" title="WhatsApp Chat">
+                <i data-lucide="message-circle"></i>
+            </a>
+            <a href="#" class="fab-opt-btn callback open-modal" title="Request Callback">
+                <i data-lucide="phone-call"></i>
+            </a>
+            <a href="#" class="fab-opt-btn brochure" id="downloadBrochureBtn" title="Download Brochure">
+                <i data-lucide="file-text"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Sheet Drawer -->
+    <div id="mobileBottomSheet" class="bottom-sheet-container">
+        <div class="bottom-sheet-backdrop" id="bottomSheetBackdrop"></div>
+        <div class="bottom-sheet-content">
+            <div class="bottom-sheet-header">
+                <div class="bottom-sheet-handle"></div>
+                <button class="bottom-sheet-close-btn" id="closeBottomSheetBtn">&times;</button>
+            </div>
+            <div class="bottom-sheet-body" id="bottomSheetBodyContent">
+                <!-- Dynamically loaded content -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-logo-container">
             <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
-            <div class="logo-text-group" style="text-align: left;">
+            <div class="footer-logo-text-group">
                 <span class="logo-text">theadmitify</span>
                 <span class="logo-tagline">Global Education</span>
             </div>
@@ -546,7 +611,7 @@
         <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify - Reaching Your Peak.</p>
         <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span
                 style="color: var(--gold); font-weight: 600;">Aun khan</span></p>
-        <div style="display: flex; gap: 1.5rem; justify-content: center;">
+        <div class="footer-links">
             <a href="#" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a>
             <a href="#" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a>
             <a href="#" style="color: var(--text-dim); text-decoration: none;">Contact Us</a>
@@ -587,24 +652,39 @@
                     <h2 style="font-size: 2rem;">Quick Application</h2>
                 </div>
                 <form class="modal-form" id="global-apply-form">
-                    <input type="text" id="global-name" placeholder="Your Full Name" required
-                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
-                    <input type="tel" id="global-phone" placeholder="Your Phone Number" required
-                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10">
-                    <input type="email" id="global-email" placeholder="Your Email ID" required>
-                    <select id="global-destination" required>
-                        <option value="">Select Destination</option>
-                        <option value="Russia">Russia</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Kazakhstan">Kazakhstan</option>
-                        <option value="Uzbekistan">Uzbekistan</option>
-                        <option value="Egypt">Egypt</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Get Free
-                        Consultation</button>
-                    <p style="text-align: center; font-size: 0.75rem; color: var(--text-dim); margin-top: 15px;">Your
-                        information is 100% secure with us.</p>
+                    <!-- Progress Bar for Mobile Step-by-Step Form -->
+                    <div class="multi-step-progress mobile-only">
+                        <div class="step-progress-bar" id="stepProgressBar"></div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div class="form-step active" data-step="1">
+                        <input type="text" id="global-name" placeholder="Your Full Name" required
+                            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
+                        <input type="email" id="global-email" placeholder="Your Email ID" required>
+                        <button type="button" class="cta-button next-step-btn mobile-only" style="width: 100%; margin-top: 10px;">Next Step</button>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step" data-step="2">
+                        <input type="tel" id="global-phone" placeholder="Your Phone Number" required
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10">
+                        <select id="global-destination" required>
+                            <option value="">Select Destination</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Kazakhstan">Kazakhstan</option>
+                            <option value="Uzbekistan">Uzbekistan</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="step-btn-group" style="display: flex; gap: 10px; margin-top: 10px;">
+                            <button type="button" class="cta-button prev-step-btn secondary-btn mobile-only" style="flex: 1;">Back</button>
+                            <button type="submit" class="cta-button submit-step-btn" style="flex: 2;">Get Free Consultation</button>
+                        </div>
+                    </div>
+
+                    <p style="text-align: center; font-size: 0.75rem; color: var(--text-dim); margin-top: 15px;">Your information is 100% secure with us.</p>
                 </form>
             </div>
         </div>
