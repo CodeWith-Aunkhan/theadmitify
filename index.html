@@ -7,7 +7,7 @@
     <title>TheAdmitify | Your Career, Our Guidance</title>
     <meta name="description"
         content="Premium admission consultancy services for students. Find the best colleges and courses with TheAdmitify.">
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="style.css?v=1.7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -74,14 +74,29 @@
             <h1>Your Career, <br><span style="color: var(--gold);">Our Guidance</span></h1>
             <p>Empowering students to reach their peak potential through expert admission counseling and personalized
                 career pathways.</p>
-            <div class="hero-btns">
-                <a href="#countries" class="cta-button" style="display: flex; align-items: center; gap: 10px;">
-                    Start Exploring <i data-lucide="arrow-right" style="width: 18px;"></i>
-                </a>
-                <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I need expert guidance for MBBS admissions"
-                    class="cta-button secondary-btn" style="display: flex; align-items: center; gap: 10px;">
-                    <i data-lucide="headset" style="width: 18px;"></i> Talk to Experts
-                </a>
+            <!-- Glassmorphic Search/Filter Bar -->
+            <div class="hero-search-bar" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); padding: 8px 10px 8px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; max-width: 650px; margin: 0 auto 3rem auto; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);">
+                <i data-lucide="search" style="color: var(--accent);"></i>
+                <input type="text" id="heroSearchInput" placeholder="Where do you want to study?" style="border: none; background: transparent; outline: none; flex: 1; font-size: 1.05rem; color: var(--text-main);">
+                <button id="heroSearchBtn" class="cta-button" style="padding: 12px 30px; border-radius: 40px;">Search</button>
+            </div>
+
+            <!-- Sleek Floating Stats Ribbon -->
+            <div class="hero-stats-ribbon" style="display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; background: #ffffff; padding: 15px 40px; border-radius: 50px; border: 1px solid rgba(99, 102, 241, 0.15); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.08);">
+                <div style="display: flex; flex-direction: column; text-align: center;">
+                    <span style="font-weight: 800; font-size: 1.5rem; color: var(--text-main); line-height: 1;">10+</span>
+                    <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Countries</span>
+                </div>
+                <div style="width: 1px; height: 35px; background: rgba(0,0,0,0.08);" class="divider"></div>
+                <div style="display: flex; flex-direction: column; text-align: center;">
+                    <span style="font-weight: 800; font-size: 1.5rem; color: var(--text-main); line-height: 1;">50+</span>
+                    <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Universities</span>
+                </div>
+                <div style="width: 1px; height: 35px; background: rgba(0,0,0,0.08);" class="divider"></div>
+                <div style="display: flex; flex-direction: column; text-align: center;">
+                    <span style="font-weight: 800; font-size: 1.5rem; color: var(--text-main); line-height: 1;">1000+</span>
+                    <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Students Placed</span>
+                </div>
             </div>
         </div>
     </section>
@@ -600,22 +615,61 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-logo-container">
-            <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
-            <div class="footer-logo-text-group">
-                <span class="logo-text">theadmitify</span>
-                <span class="logo-tagline">Global Education</span>
+    <footer class="site-footer" style="position: relative; overflow: hidden; padding-bottom: 2rem; padding-top: 8rem; margin-top: 6rem;">
+        <!-- Floating Newsletter Box -->
+        <div class="newsletter-box" style="background: var(--accent-gradient); padding: 3rem; border-radius: 24px; max-width: 900px; margin: -14rem auto 4rem auto; position: relative; z-index: 10; box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; width: 90%;">
+            <div style="text-align: left; color: #fff;">
+                <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">Ready to start your journey?</h3>
+                <p style="opacity: 0.9;">Subscribe to get the latest admission updates.</p>
+            </div>
+            <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.2); padding: 5px; border-radius: 50px;">
+                <input type="email" placeholder="Enter your email" style="background: transparent; border: none; outline: none; padding: 10px 20px; color: #fff; width: 100%; min-width: 200px;">
+                <button class="cta-button" style="background: #fff; color: var(--accent); box-shadow: none;">Subscribe</button>
             </div>
         </div>
-        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify - Reaching Your Peak.</p>
-        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span
-                style="color: var(--gold); font-weight: 600;">Aun khan</span></p>
-        <div class="footer-links">
-            <a href="#" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a>
-            <a href="#" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a>
-            <a href="#" style="color: var(--text-dim); text-decoration: none;">Contact Us</a>
+
+        <div class="footer-content-wrapper" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 5%;">
+            <div>
+                <div class="footer-logo-container" style="justify-content: flex-start; margin-bottom: 1.5rem;">
+                    <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
+                    <div class="footer-logo-text-group">
+                        <span class="logo-text" style="color: var(--accent);">theadmitify</span>
+                        <span class="logo-tagline" style="color: var(--text-dim);">Global Education</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.95rem;">Empowering students to reach their peak potential through expert admission counseling.</p>
+                <div class="social-icons" style="display: flex; gap: 15px;">
+                    <a href="#" style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'"><i data-lucide="instagram"></i></a>
+                    <a href="#" style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'"><i data-lucide="facebook"></i></a>
+                    <a href="#" style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="#about" style="color: var(--text-dim); text-decoration: none;">About Us</a></li>
+                    <li><a href="#countries" style="color: var(--text-dim); text-decoration: none;">Study Abroad</a></li>
+                    <li><a href="#services" style="color: var(--text-dim); text-decoration: none;">Services</a></li>
+                    <li><a href="#testimonials" style="color: var(--text-dim); text-decoration: none;">Testimonials</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Legal</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Refund Policy</a></li>
+                </ul>
+            </div>
         </div>
+
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; padding-left: 5%; padding-right: 5%;">
+            <p style="color: var(--text-dim); font-size: 0.9rem;">© 2026 theadmitify - Reaching Your Peak.</p>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Designed & Developed by <span style="color: var(--accent); font-weight: 600;">Aun khan</span></p>
+        </div>
+
+        <!-- Massive Typography at Bottom -->
+        <h1 style="font-size: 11vw; font-weight: 900; color: rgba(15, 23, 42, 0.03); line-height: 0.8; margin-top: 4rem; margin-bottom: -1rem; letter-spacing: -0.05em; text-align: center; overflow: hidden; white-space: nowrap; user-select: none;">THE ADMITIFY</h1>
     </footer>
 
     <!-- Global Quick Apply Modal -->
@@ -692,7 +746,7 @@
 
 
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1.6"></script>
     <script>
         lucide.createIcons();
     </script>

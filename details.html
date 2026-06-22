@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Study MBBS | TheAdmitify</title>
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="style.css?v=1.7">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link
@@ -475,24 +475,49 @@
         </div>
     </section>
 
-    <footer
-        style="padding: 4rem 10%; background: var(--primary); border-top: 1px solid var(--glass-border); text-align: center;">
-        <div class="logo-container" style="justify-content: center; margin-bottom: 2rem;">
-            <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
-            <div class="logo-text-group" style="text-align: left;">
-                <span class="logo-text">theadmitify</span>
-                <span class="logo-tagline">Global Education</span>
+    <footer class="site-footer"
+        style="position: relative; overflow: hidden; padding-bottom: 2rem; padding-top: 4rem; margin-top: 4rem; background: #ffffff; border-top: 1px solid var(--glass-border);">
+        <div class="footer-content-wrapper"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 5%;">
+            <div>
+                <div class="footer-logo-container"
+                    style="display: flex; align-items: center; gap: 12px; justify-content: flex-start; margin-bottom: 1.5rem;">
+                    <img src="assets/logo.png" alt="TheAdmitify Logo" style="height: 40px;">
+                    <div class="footer-logo-text-group" style="text-align: left;">
+                        <span class="logo-text"
+                            style="color: var(--accent); font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; display: block; line-height: 1;">theadmitify</span>
+                        <span class="logo-tagline"
+                            style="color: var(--text-dim); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">Global
+                            Education</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.95rem;">Empowering students to
+                    reach their peak potential through expert admission counseling.</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="index.html#about" style="color: var(--text-dim); text-decoration: none;">About Us</a>
+                    </li>
+                    <li><a href="index.html#countries" style="color: var(--text-dim); text-decoration: none;">Study
+                            Abroad</a></li>
+                    <li><a href="index.html#services"
+                            style="color: var(--text-dim); text-decoration: none;">Services</a></li>
+                </ul>
             </div>
         </div>
-        <p style="color: var(--text-dim); margin-bottom: 0.5rem;">© 2026 theadmitify - Reaching Your Peak.</p>
-        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 2rem;">Designed & Developed by <span
-                style="color: var(--gold); font-weight: 600;">Aun khan</span></p>
-        <div style="display: flex; gap: 1.5rem; justify-content: center;">
-            <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Home</a>
-            <a href="index.html#about" style="color: var(--text-dim); text-decoration: none;">About Us</a>
-            <a href="index.html#countries" style="color: var(--text-dim); text-decoration: none;">Study Abroad</a>
-            <a href="index.html#services" style="color: var(--text-dim); text-decoration: none;">Services</a>
+
+        <div
+            style="border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; padding-left: 5%; padding-right: 5%;">
+            <p style="color: var(--text-dim); font-size: 0.9rem;">© 2026 theadmitify - Reaching Your Peak.</p>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Designed & Developed by <span
+                    style="color: var(--accent); font-weight: 600;">Aun khan</span></p>
         </div>
+
+        <!-- Massive Typography at Bottom -->
+        <h1
+            style="font-size: 11vw; font-weight: 900; color: rgba(15, 23, 42, 0.03); line-height: 0.8; margin-top: 4rem; margin-bottom: -1rem; letter-spacing: -0.05em; text-align: center; overflow: hidden; white-space: nowrap; user-select: none;">
+            THE ADMITIFY</h1>
     </footer>
 
     <!-- Floating WhatsApp -->
@@ -743,7 +768,7 @@
         const waBtn = document.getElementById('whatsapp-btn');
         waBtn.href = `https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in ${country}. My name is:`;
     </script>
-    <script src="script.js"></script>
+    <script src="script.js?v=1.5"></script>
 </body>
 
 </html>

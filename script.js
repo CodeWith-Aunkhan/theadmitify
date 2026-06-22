@@ -341,20 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-      // Show animation ONLY if it's a fresh entry or refresh
-      // We use a small delay only on the very first visit
-      const isFirstLoad = !sessionStorage.getItem('theadmitify_visited');
-      
-      if (isFirstLoad) {
-        setTimeout(() => {
-          preloader.classList.add('loaded');
-          sessionStorage.setItem('theadmitify_visited', 'true');
-        }, 1500);
-      } else {
-        // If already visited, remove it instantly without any animation
-        preloader.style.display = 'none';
+      // Show animation every time the page loads/refreshes
+      setTimeout(() => {
         preloader.classList.add('loaded');
-      }
+      }, 1500);
     }
   });
 
@@ -663,6 +653,237 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 5. Scroll Reveal Animation Logic
+  const revealElements = document.querySelectorAll('.country-card, .college-card, .team-card, .video-card, .stat-item, .feature-box, .section-header');
+  revealElements.forEach(el => el.classList.add('reveal-hidden'));
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // 6. 3D Tilt Effect on Cards (Desktop Only)
+  if (window.innerWidth > 768) {
+    const tiltCards = document.querySelectorAll('.country-card, .college-card, .team-card');
+    tiltCards.forEach(card => {
+      card.classList.add('tilt-card');
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg tilt
+        const rotateY = ((x - centerX) / centerX) * 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      });
+    });
+  }
+
+  // 7. Hero Search Bar Logic (Auto-Scroll)
+  const heroSearchInput = document.getElementById('heroSearchInput');
+  const heroSearchBtn = document.getElementById('heroSearchBtn');
+
+  if (heroSearchInput && heroSearchBtn) {
+    // Helper function for fuzzy matching (Levenshtein distance)
+    const getEditDistance = (a, b) => {
+      if (a.length === 0) return b.length;
+      if (b.length === 0) return a.length;
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+          }
+        }
+      }
+      return matrix[b.length][a.length];
+    };
+
+    const showCustomAlert = (title, message) => {
+      const existing = document.getElementById('custom-toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.id = 'custom-toast';
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        padding: 20px 25px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 10000;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        width: 90%;
+        max-width: 400px;
+      `;
+
+      toast.innerHTML = `
+        <div style="background: rgba(239, 68, 68, 0.1); color: #ef4444; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 5px 0; color: var(--text-main); font-size: 1.05rem;">${title}</h4>
+          <p style="margin: 0; color: var(--text-dim); font-size: 0.85rem; line-height: 1.4;">${message}</p>
+        </div>
+      `;
+
+      document.body.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.style.transform = 'translateX(-50%) translateY(0)';
+        toast.style.opacity = '1';
+      });
+
+      setTimeout(() => {
+        toast.style.transform = 'translateX(-50%) translateY(100px)';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+      }, 4000);
+    };
+
+    const handleSearch = () => {
+      const query = heroSearchInput.value.trim().toLowerCase();
+      if (!query) return;
+
+      const countriesSection = document.getElementById('countries');
+      if (!countriesSection) return;
+
+      // Scroll to the countries section
+      const offsetTop = countriesSection.offsetTop - 100; // Account for fixed header
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+
+      // Find the specific card
+      const searchCountryCards = document.querySelectorAll('#countries .country-card');
+      let found = false;
+
+      searchCountryCards.forEach(card => {
+        const h3 = card.querySelector('h3');
+        if (!h3) return;
+        
+        const countryName = h3.innerText.toLowerCase();
+        
+        // Remove previous highlights
+        card.style.boxShadow = '';
+        card.style.borderColor = '';
+        card.style.transform = '';
+
+        // Allow up to 2 character mistakes for words > 4 chars
+        const maxMistakes = query.length > 4 ? 2 : 1;
+        const distance = getEditDistance(query, countryName);
+        
+        // Also check if the query is a close match to the beginning of the country name
+        const prefixDistance = getEditDistance(query, countryName.substring(0, query.length));
+
+        if (countryName.includes(query) || distance <= maxMistakes || prefixDistance <= maxMistakes) {
+          found = true;
+          setTimeout(() => {
+            // Apply highlight effect after scrolling
+            card.style.transition = 'all 0.5s ease';
+            card.style.boxShadow = '0 0 40px rgba(99, 102, 241, 0.8)';
+            card.style.borderColor = 'var(--accent)';
+            card.style.transform = 'scale(1.05)';
+            card.style.zIndex = '10';
+            
+            // Remove highlight after 3.5 seconds
+            setTimeout(() => {
+              card.style.boxShadow = '';
+              card.style.borderColor = '';
+              card.style.transform = '';
+              card.style.zIndex = '';
+            }, 3500);
+          }, 800); // Wait for smooth scroll to finish
+        }
+      });
+
+      if (!found) {
+        setTimeout(() => {
+          showCustomAlert("Country Not Found", "Sorry, we couldn't find a matching country. Please check our available top destinations below.");
+        }, 800);
+      }
+    };
+
+    heroSearchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleSearch();
+    });
+    heroSearchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSearch();
+      }
+    });
+
+    // Typewriter effect for Search Placeholder
+    const examples = ['Russia', 'Georgia', 'Kazakhstan', 'Uzbekistan', 'Egypt'];
+    let currentExampleIdx = 0;
+    let currentCharIdx = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    const typePlaceholder = () => {
+      // Don't animate if user is focused or has typed something
+      if (document.activeElement === heroSearchInput || heroSearchInput.value.length > 0) {
+        heroSearchInput.setAttribute('placeholder', "Where do you want to study?");
+        setTimeout(typePlaceholder, 1000);
+        return;
+      }
+
+      const currentWord = examples[currentExampleIdx];
+      
+      if (isDeleting) {
+        heroSearchInput.setAttribute('placeholder', `Try searching "${currentWord.substring(0, currentCharIdx - 1)}"`);
+        currentCharIdx--;
+        typingSpeed = 50;
+      } else {
+        heroSearchInput.setAttribute('placeholder', `Try searching "${currentWord.substring(0, currentCharIdx + 1)}"`);
+        currentCharIdx++;
+        typingSpeed = 150;
+      }
+
+      if (!isDeleting && currentCharIdx === currentWord.length) {
+        typingSpeed = 2000; // Pause at the end of the word
+        isDeleting = true;
+      } else if (isDeleting && currentCharIdx === 0) {
+        isDeleting = false;
+        currentExampleIdx = (currentExampleIdx + 1) % examples.length;
+        typingSpeed = 500; // Pause before typing the next word
+      }
+
+      setTimeout(typePlaceholder, typingSpeed);
+    };
+
+    // Start typewriter effect
+    setTimeout(typePlaceholder, 1000);
+  }
 
   // Start the schedule
   schedulePopup();
