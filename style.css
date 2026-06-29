@@ -803,29 +803,76 @@ nav {
 .premium-modal {
   max-width: 900px;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   overflow: hidden;
-  background: var(--secondary);
+  background: #ffffff; /* White background for the whole modal */
+  border-radius: 20px; /* Outer border radius */
 }
 
-.modal-left {
-  background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800');
-  background-size: cover;
-  background-position: center;
+/* Modal Form Side (Left) */
+.modal-form-side {
+  flex: 1;
   padding: 3rem;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
-  position: relative;
-  border-right: 1px solid var(--glass-border);
+  justify-content: center;
 }
 
-.modal-right {
+/* Modal Visual Side (Right) */
+.modal-visual-side {
+  flex: 1;
+  background: #6366f1; /* Solid blue swoop */
   padding: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.05), transparent 50%);
+  align-items: center;
+  text-align: center;
+  border-radius: 120px 0 0 120px; /* The swoop effect */
+  color: white;
+}
+
+/* Input Wrappers */
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon input, .input-with-icon select {
+  width: 100%;
+  padding: 15px 45px 15px 20px !important; /* Space for icon on right */
+  border-radius: 10px !important;
+  border: none !important;
+  background: #f3f4f6 !important;
+  color: #1f2937 !important;
+  font-size: 1rem;
+}
+
+.input-with-icon i {
+  position: absolute;
+  right: 15px;
+  color: #9ca3af;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.modal-form input:focus, .modal-form select:focus {
+  background: #e5e7eb !important;
+  outline: none;
+}
+
+.modal-form .cta-button {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+  border-radius: 10px;
+  padding: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
 }
 
 .modal-trust-badge {
@@ -873,16 +920,17 @@ nav {
 
 @media (max-width: 768px) {
   .premium-modal {
-    grid-template-columns: 1fr;
+    flex-direction: column-reverse;
     max-height: 90vh;
     overflow-y: auto;
   }
-  .modal-left {
+  .modal-form-side {
     padding: 2rem;
     min-height: 250px;
   }
-  .modal-right {
+  .modal-visual-side {
     padding: 2rem;
+    border-radius: 0;
   }
 }
 
@@ -899,7 +947,7 @@ nav {
 }
 
 .close-modal:hover {
-  color: var(--gold);
+  color: #1f2937;
 }
 
 .modal-header {
@@ -907,34 +955,15 @@ nav {
   margin-bottom: 2rem;
 }
 
-.modal-header h2 {
-  font-size: 2.5rem;
-  color: #fff;
-}
-
 .modal-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.modal-form input, .modal-form select {
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  width: 100%;
-}
-
-.modal-form input:focus, .modal-form select:focus {
-  border-color: var(--gold);
-  outline: none;
+  gap: 1.2rem;
 }
 
 .modal-form select option {
-  background-color: var(--primary);
-  color: #fff;
+  background-color: #ffffff;
+  color: #1f2937;
 }
 
 @media (max-width: 480px) {
