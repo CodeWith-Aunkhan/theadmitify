@@ -1158,7 +1158,8 @@ nav {
   opacity: 0;
   transition: opacity 0.3s ease;
   border: 1px solid var(--glass-border);
-  color: #fff;
+  color: var(--text-main);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .marker:hover .marker-label {
@@ -1626,10 +1627,10 @@ nav {
     transform: translateY(-2px);
   }
 
-  /* Re-position WhatsApp Float to prevent overlapping with bottom bar */
+  /* Re-position WhatsApp Float to be properly placed */
   .whatsapp-float {
-    bottom: 96px !important;
-    right: 24px !important;
+    bottom: 24px !important;
+    right: 20px !important;
   }
 
   /* Hide Desktop Hamburguer Toggle */
@@ -1773,8 +1774,8 @@ nav {
 /* 1. Floating Action Button (FAB) Menu */
 .fab-menu-container {
   position: fixed;
-  bottom: 96px;
-  right: 24px;
+  bottom: 30px;
+  right: 30px;
   z-index: 9999;
   display: flex;
   flex-direction: column;

@@ -13,55 +13,91 @@
         rel="stylesheet">
     <style>
         .details-hero {
-            height: 60vh;
+            height: 70vh;
+            min-height: 500px;
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 0 20px;
+            margin-top: 80px;
         }
 
         .details-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), var(--secondary));
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.7) 60%, var(--primary) 100%);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: cardReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-tagline-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            color: var(--gold);
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            color: #ffffff;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            line-height: 1.7;
+            font-weight: 400;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .why-section {
             padding: 100px 5%;
-            background: var(--secondary);
+            background: transparent;
         }
 
         .description-container {
             max-width: 900px;
-            margin: 0 auto 3rem auto;
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05) 0%, rgba(251, 191, 36, 0.01) 100%);
-            border: 1px solid rgba(251, 191, 36, 0.15);
-            padding: 2.5rem;
+            margin: 0 auto 4rem auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 3rem 2rem;
             border-radius: 24px;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(251, 191, 36, 0.1);
             text-align: center;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
         .description-container::before {
@@ -79,16 +115,17 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(251, 191, 36, 0.1);
-            color: var(--gold);
-            padding: 6px 16px;
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            color: var(--secondary);
+            padding: 8px 24px;
             border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 1.2rem;
-            border: 1px solid rgba(251, 191, 36, 0.2);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+            border: none;
         }
 
         .pulse-dot {
@@ -119,11 +156,10 @@
         #country-why-desc {
             font-size: 1.35rem;
             line-height: 1.9;
-            color: #ffffff;
+            color: var(--text-main);
             font-family: 'Outfit', sans-serif;
             font-weight: 500;
             letter-spacing: 0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             margin: 0;
         }
 
@@ -135,10 +171,9 @@
         }
 
         .why-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             padding: 2.5rem;
             border-radius: 24px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -198,14 +233,13 @@
         }
 
         .why-card:hover {
-            border-color: rgba(251, 191, 36, 0.5);
+            border-color: rgba(99, 102, 241, 0.3);
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px -10px rgba(251, 191, 36, 0.15);
-            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
         }
 
         .why-card h4 {
-            color: var(--gold);
+            color: var(--accent);
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -220,7 +254,7 @@
         .why-card p {
             position: relative;
             z-index: 2;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-dim);
             font-size: 1.05rem;
             line-height: 1.7;
             font-weight: 400;
@@ -351,7 +385,7 @@
     </style>
 </head>
 
-<body style="background: var(--secondary); color: var(--text-main);">
+<body style="background: var(--primary); color: var(--text-main);">
     <!-- Premium Pre-loader -->
     <div class="preloader" id="preloader">
         <script>
@@ -365,15 +399,48 @@
         </div>
         <div class="loader-text">TheAdmitify</div>
     </div>
+    <div class="scroll-progress" id="progressBar"></div>
 
-    <a href="index.html" class="back-btn">← Back to Home</a>
-
+    <nav>
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <div class="logo-text-group" onclick="window.location.href='index.html'" style="cursor: pointer;">
+                <span class="logo-text">theadmitify</span>
+                <span class="logo-tagline">Global Education</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li class="dropdown">
+                <a href="index.html#countries">Study Abroad <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                <div class="dropdown-content">
+                    <a href="details.html?country=Russia">MBBS in Russia</a>
+                    <a href="details.html?country=Georgia">MBBS in Georgia</a>
+                    <a href="details.html?country=Kazakhstan">MBBS in Kazakhstan</a>
+                    <a href="details.html?country=Uzbekistan">MBBS in Uzbekistan</a>
+                    <a href="details.html?country=Egypt">MBBS in Egypt</a>
+                    <a href="details.html?country=America">MBBS in America</a>
+                </div>
+            </li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+        </ul>
+        <div class="nav-actions" style="display: flex; gap: 1rem; align-items: center;">
+            <button class="cta-button open-modal">Apply Now</button>
+        </div>
+        <button class="menu-toggle" id="mobileMenuBtn">
+            <i data-lucide="menu"></i>
+        </button>
+    </nav>
     <section class="details-hero" id="hero-bg">
         <div class="hero-content">
-            <span class="hero-tagline" style="color: #fff; font-weight: 600; letter-spacing: 2px;">Study Medicine in</span>
-            <h1 id="country-name" style="text-shadow: 0 5px 15px rgba(0,0,0,0.5); font-weight: 800;">Country</h1>
-            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.95); max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
-                Global medical education that transforms your career. Excellence in every step.</p>
+            <span class="hero-tagline-badge">
+                <i data-lucide="map-pin" style="display: inline-block; width: 14px; height: 14px; margin-right: 5px; margin-bottom: -2px;"></i>
+                Study Medicine in
+            </span>
+            <h1 id="country-name">Country</h1>
+            <p>Global medical education that transforms your career. Excellence in every step, from admission to graduation.</p>
         </div>
     </section>
 
@@ -383,12 +450,11 @@
             <h2>MBBS in <span id="country-title" style="color: var(--gold);">Country</span></h2>
         </div>
 
-        <div class="description-container">
-            <div class="description-badge">
+        <div class="description-container" style="background: #ffffff; border: 1px solid rgba(99, 102, 241, 0.15); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.08); padding: 3rem 2rem; border-radius: 20px;">
+            <div class="description-badge" style="display: inline-block; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0f172a; padding: 10px 25px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); margin-bottom: 20px; letter-spacing: 1px;">
                 ★ Global Medical Standards for a Brighter Future
             </div>
-            <p id="country-why-desc">Explore the unique advantages of pursuing medical education in this top-tier
-                destination.</p>
+            <p id="country-why-desc" style="font-size: 1.35rem; color: var(--text-main); font-weight: 500; line-height: 1.8; max-width: 800px; margin: 0 auto;">Explore the unique advantages of pursuing medical education in this top-tier destination.</p>
         </div>
 
         <div class="why-grid" id="reasons-grid">
@@ -427,14 +493,14 @@
                     <button type="submit" class="cta-button"
                         style="width: 100%; padding: 18px; font-size: 1.1rem; background: #6366f1; color: white; border-radius: 10px; border: none; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);">Submit Application</button>
 
-                    <p style="text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 5px;">Your information is 100% secure with us.</p>
+                    <div style="text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 5px;">Your information is 100% secure with us.</div>
                     
                     <div style="text-align: center; margin-top: 5px;">
-                        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px;">- OR -</p>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 10px;">- OR -</div>
                         <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in Russia"
                             id="whatsapp-btn"
                             style="display: flex; align-items: center; justify-content: center; gap: 10px; color: #25D366; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid #25D366; padding: 12px; border-radius: 12px; transition: all 0.3s ease;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt="WA">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M12.01 2.003c-5.46 0-9.89 4.43-9.89 9.89 0 1.74.453 3.447 1.314 4.954L2 22l5.318-1.396A9.851 9.851 0 0012.01 21.78c5.46 0 9.89-4.43 9.89-9.89 0-5.46-4.43-9.89-9.89-9.89zM12.01 19.98c-1.488 0-2.946-.401-4.225-1.16l-.303-.18-3.137.822.836-3.056-.197-.314A8.106 8.106 0 013.91 11.89c0-4.475 3.639-8.113 8.1-8.113 4.461 0 8.101 3.638 8.101 8.113s-3.64 8.09-8.1 8.09zm4.444-6.06c-.244-.122-1.442-.712-1.666-.793-.222-.082-.386-.123-.548.122-.162.245-.629.793-.771.954-.143.163-.285.184-.528.062-1.134-.572-2.138-1.111-2.955-2.502-.088-.148.163-.122.518-.83.08-.161.04-.303-.021-.425-.06-.122-.547-1.318-.75-1.805-.198-.475-.4-.41-.548-.418-.142-.008-.306-.008-.468-.008-.162 0-.426.061-.649.305-.224.244-.852.832-.852 2.03 0 1.198.872 2.355.994 2.518.122.162 1.716 2.617 4.156 3.67.581.251 1.034.402 1.386.514.582.185 1.112.158 1.533.096.47-.07 1.443-.59 1.646-1.161.202-.572.202-1.06.142-1.162-.061-.102-.223-.163-.467-.285z"/></svg>
                             Quick Apply via WhatsApp
                         </a>
                     </div>
@@ -483,55 +549,12 @@
         </div>
     </section>
 
-    <footer class="site-footer"
-        style="position: relative; overflow: hidden; padding-bottom: 2rem; padding-top: 4rem; margin-top: 4rem; background: #ffffff; border-top: 1px solid var(--glass-border);">
-        <div class="footer-content-wrapper"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 5%;">
-            <div>
-                <div class="footer-logo-container"
-                    style="display: flex; align-items: center; gap: 12px; justify-content: flex-start; margin-bottom: 1.5rem;">
-                    <img src="assets/logo.png" alt="TheAdmitify Logo" style="height: 40px;">
-                    <div class="footer-logo-text-group" style="text-align: left;">
-                        <span class="logo-text"
-                            style="color: var(--accent); font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; display: block; line-height: 1;">theadmitify</span>
-                        <span class="logo-tagline"
-                            style="color: var(--text-dim); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">Global
-                            Education</span>
-                    </div>
-                </div>
-                <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.95rem;">Empowering students to
-                    reach their peak potential through expert admission counseling.</p>
-            </div>
-            <div>
-                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h4>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
-                    <li><a href="index.html#about" style="color: var(--text-dim); text-decoration: none;">About Us</a>
-                    </li>
-                    <li><a href="index.html#countries" style="color: var(--text-dim); text-decoration: none;">Study
-                            Abroad</a></li>
-                    <li><a href="index.html#services"
-                            style="color: var(--text-dim); text-decoration: none;">Services</a></li>
-                </ul>
-            </div>
-        </div>
 
-        <div
-            style="border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; padding-left: 5%; padding-right: 5%;">
-            <p style="color: var(--text-dim); font-size: 0.9rem;">© 2026 theadmitify - Reaching Your Peak.</p>
-            <p style="color: var(--text-dim); font-size: 0.9rem;">Designed & Developed by <span
-                    style="color: var(--accent); font-weight: 600;">Aun khan</span></p>
-        </div>
-
-        <!-- Massive Typography at Bottom -->
-        <h1
-            style="font-size: 11vw; font-weight: 900; color: rgba(15, 23, 42, 0.03); line-height: 0.8; margin-top: 4rem; margin-bottom: -1rem; letter-spacing: -0.05em; text-align: center; overflow: hidden; white-space: nowrap; user-select: none;">
-            THE ADMITIFY</h1>
-    </footer>
 
     <!-- Floating WhatsApp -->
     <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to know more about MBBS abroad" class="whatsapp-float"
         target="_blank">
-        <i data-lucide="phone"></i>
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.01 2.003c-5.46 0-9.89 4.43-9.89 9.89 0 1.74.453 3.447 1.314 4.954L2 22l5.318-1.396A9.851 9.851 0 0012.01 21.78c5.46 0 9.89-4.43 9.89-9.89 0-5.46-4.43-9.89-9.89-9.89zM12.01 19.98c-1.488 0-2.946-.401-4.225-1.16l-.303-.18-3.137.822.836-3.056-.197-.314A8.106 8.106 0 013.91 11.89c0-4.475 3.639-8.113 8.1-8.113 4.461 0 8.101 3.638 8.101 8.113s-3.64 8.09-8.1 8.09zm4.444-6.06c-.244-.122-1.442-.712-1.666-.793-.222-.082-.386-.123-.548.122-.162.245-.629.793-.771.954-.143.163-.285.184-.528.062-1.134-.572-2.138-1.111-2.955-2.502-.088-.148.163-.122.518-.83.08-.161.04-.303-.021-.425-.06-.122-.547-1.318-.75-1.805-.198-.475-.4-.41-.548-.418-.142-.008-.306-.008-.468-.008-.162 0-.426.061-.649.305-.224.244-.852.832-.852 2.03 0 1.198.872 2.355.994 2.518.122.162 1.716 2.617 4.156 3.67.581.251 1.034.402 1.386.514.582.185 1.112.158 1.533.096.47-.07 1.443-.59 1.646-1.161.202-.572.202-1.06.142-1.162-.061-.102-.223-.163-.467-.285z"/></svg>
     </a>
 
     <!-- Global Quick Apply Modal -->
@@ -595,9 +618,9 @@
                     </div>
 
                     <div class="avatar-group" style="justify-content: center;">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Student">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" alt="Student">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100" alt="Student">
+                        <img src="assets/student1.jpg" alt="Student">
+                        <img src="assets/student2.jpg" alt="Student">
+                        <img src="assets/student3.jpg" alt="Student">
                         <div style="width: 35px; height: 35px; border-radius: 50%; background: #fbbf24; border: 2px solid #6366f1; margin-left: -10px; display: flex; align-items: center; justify-content: center; color: #1f2937; font-size: 0.7rem; font-weight: 800;">500+</div>
                     </div>
                     <span style="font-size: 0.85rem; color: #fff; font-weight: 600; margin-top: 5px;">Trusted by 500+ Parents & Students</span>
@@ -625,7 +648,7 @@
     <script>
         const countryData = {
             'Russia': {
-                bg: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/russia.jpg',
                 desc: 'Russia is a global leader in medical education, housing some of the oldest and most prestigious universities. With a focus on research and advanced clinical training, it provides a comprehensive learning experience.',
                 reasons: [
                     { title: 'Global Recognition', desc: 'Degree recognized by MCI (NMC), WHO, and UNESCO, allowing you to practice worldwide.' },
@@ -634,7 +657,7 @@
                 ]
             },
             'Georgia': {
-                bg: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/georgia.jpg',
                 desc: "Georgia provides a European-standard medical education that is both NMC-recognized and affordable. The country's safe environment, modern infrastructure, and English-medium curriculum make it a preferred destination for international students.",
                 reasons: [
                     { title: 'European Standard', desc: 'High-quality education following European standards with modern infrastructure.' },
@@ -644,7 +667,7 @@
                 ]
             },
             'Kazakhstan': {
-                bg: 'https://dwq3yv87q1b43.cloudfront.net/public/blogs/fit-in/1200x675/Blog_20250421-2015241331-1745215049.jpg',
+                bg: 'assets/kazakhstan.jpg',
                 desc: 'Kazakhstan offers an efficient and cost-effective pathway to becoming a doctor, with several NMC-approved universities. The program is designed to meet international standards, ensuring students gain the necessary skills for a successful global career.',
                 reasons: [
                     { title: 'Quick Process', desc: 'Admission and visa process takes less than 30 days.' },
@@ -652,7 +675,7 @@
                 ]
             },
             'Uzbekistan': {
-                bg: 'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ4ypAgJAytVnMoY82C-chjtJ7CXmezfiXhoSW7fBNtto0qxm-7O4_-9tE8IaMvFHMFelZqsIw0bDgLrAMAhrrTH64&s=19',
+                bg: 'assets/uzbekistan.png',
                 desc: 'Experience high-quality medical education in Uzbekistan, where modern technology meets affordable living, paving the way for your successful global medical career.',
                 reasons: [
                     { title: 'Bilingual Education', desc: 'Classes are conducted in 100% English medium for international students.' },
@@ -661,7 +684,7 @@
                 ]
             },
             'Egypt': {
-                bg: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/egypt.jpg',
                 desc: 'Egypt’s medical programs are modeled on global standards with a strong emphasis on clinical practices. The rich cultural environment combined with affordable fee structures provides a unique and valuable experience for Indian medical aspirants.',
                 reasons: [
                     { title: 'High Clinical Load', desc: 'Egypt has a huge population, providing immense practical exposure for medical students.' },
@@ -671,7 +694,7 @@
                 ]
             },
             'America': {
-                bg: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/america.jpg',
                 desc: 'The United States offers unparalleled clinical exposure and world-class research opportunities. A degree from the USA is globally recognized, opening doors to top-tier residency programs and a prestigious career in medicine anywhere in the world.',
                 reasons: [
                     { title: 'World Class Tech', desc: 'Access to the most advanced medical technology and research facilities.' },
@@ -681,7 +704,7 @@
                 ]
             },
             'Europe': {
-                bg: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/europe.jpg',
                 desc: 'Medical universities across Europe offer cutting-edge laboratory facilities. Students benefit from an international perspective, excellent clinical training, and vast opportunities for professional growth across the continent.',
                 reasons: [
                     { title: 'Global Recognition', desc: 'Practice anywhere in the EU and globally with highly respected European degrees.' },
@@ -690,7 +713,7 @@
                 ]
             },
             'Belarus': {
-                bg: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEU0jDOV0jZgdY8duUT_8F3QVTUj9GhRdITTH3tJlSC_PV9UOXq_BY9FLDSSNPYBGOXQRSLGRlp-yfugCX_Ov7U4S_tNY7Kl_GnCUzN32Rmhr6pTF8k-uai-HCLHtumL9WwK7w=w1200-h675-n-k-no',
+                bg: 'assets/belarus.png',
                 desc: 'Belarus offers a highly structured medical curriculum and a low cost of living, making it an excellent option for budget-conscious students. Its focus on practical training ensures that graduates are well-prepared for global licensing examinations.',
                 reasons: [
                     { title: 'Practical Focus', desc: 'Strong focus on hands-on practical clinical training from early years.' },
@@ -699,7 +722,7 @@
                 ]
             },
             'Kyrgyzstan': {
-                bg: 'https://images.unsplash.com/photo-1547941126-3d5322b218b0?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/kyrgyzstan.jpg',
                 desc: 'Kyrgyzstan offers highly affordable MBBS options with NMC-approved government and private universities. With easy admission requirements and lower budgets, it remains a highly popular choice for Indian medical aspirants.',
                 reasons: [
                     { title: 'Extremely Low Fees', desc: 'One of the most budget-friendly destinations globally to study MBBS.' },
@@ -709,7 +732,7 @@
                 ]
             },
             'Nepal': {
-                bg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/nepal.jpg',
                 desc: 'Study MBBS in Nepal, which shares a close cultural and geographical connection with India. With no visa requirement for Indians and highly similar climates and disease patterns, Nepal offers a home-away-from-home learning experience.',
                 reasons: [
                     { title: 'No Visa Required', desc: 'Indian students do not require a passport or visa to travel and study in Nepal.' },
@@ -719,7 +742,7 @@
                 ]
             },
             'Bangladesh': {
-                bg: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/bangladesh.jpg',
                 desc: 'Bangladesh is one of the top choices for Indian students due to its high passing rate in the FMGE (NMC) licensing exam. With a highly similar syllabus, textbook options, and patient profile, it offers a seamless transition back to India.',
                 reasons: [
                     { title: 'Top FMGE Passing Rate', desc: 'Consistently ranks among the highest passing percentages for FMGE/NEXT exams.' },
@@ -729,7 +752,7 @@
                 ]
             },
             'Philippines': {
-                bg: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&q=80&w=1200',
+                bg: 'assets/philippines.jpg',
                 desc: 'The Philippines offers an American-based medical education model (MD program) with a strong emphasis on clinical history taking and communication. Known for high English proficiency, it provides outstanding practical exposure.',
                 reasons: [
                     { title: 'US Education Model', desc: 'Follows the BS-MD syllabus structure, modeled closely on US medical standards.' },
@@ -766,8 +789,9 @@
         // Add special "Global Confidence & Personality Growth" thought card
         const confidenceCard = document.createElement('div');
         confidenceCard.className = 'why-card';
-        confidenceCard.style.background = 'linear-gradient(135deg, rgba(251, 191, 36, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)';
-        confidenceCard.style.borderColor = 'rgba(251, 191, 36, 0.2)';
+        confidenceCard.style.background = '#ffffff';
+        confidenceCard.style.borderColor = 'rgba(251, 191, 36, 0.3)';
+        confidenceCard.style.boxShadow = '0 10px 30px rgba(251, 191, 36, 0.1)';
         confidenceCard.innerHTML = `
             <h4 style="color: var(--gold);"><span style="color: var(--gold);">★</span> Personal & Global Growth</h4>
             <p style="color: var(--text-dim); line-height: 1.6;">Living and studying abroad shifts your perspective. By managing daily life independently and communicating in a multicultural environment, you build self-reliant confidence, exceptional leadership skills, and global communication fluency that lasts a lifetime.</p>
@@ -778,8 +802,9 @@
         const hostelCard = document.createElement('div');
         hostelCard.className = 'why-card';
         hostelCard.style.cssText = `
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border-color: rgba(99, 179, 237, 0.25);
+            background: #ffffff;
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
             position: relative;
             overflow: hidden;
         `;
@@ -787,14 +812,14 @@
             <div style="
                 position: absolute; top: -30px; right: -30px;
                 width: 100px; height: 100px;
-                background: radial-gradient(circle, rgba(99, 179, 237, 0.1) 0%, transparent 70%);
+                background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
                 pointer-events: none;
             "></div>
-            <h4 style="color: #63b3ed; display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem;">
+            <h4 style="color: #3b82f6; display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem;">
                 <span style="
                     width: 38px; height: 38px;
-                    background: linear-gradient(135deg, rgba(99, 179, 237, 0.2), rgba(99, 179, 237, 0.05));
-                    border: 1px solid rgba(99, 179, 237, 0.3);
+                    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+                    border: 1px solid rgba(59, 130, 246, 0.2);
                     border-radius: 10px;
                     display: flex; align-items: center; justify-content: center;
                     font-size: 1.1rem; flex-shrink: 0;
@@ -802,12 +827,12 @@
                 Hostel &amp; Mess Facility
             </h4>
             <p style="color: var(--text-dim); line-height: 1.8; font-size: 0.95rem;">
-                University-managed hostels provide safe, comfortable accommodation with 24/7 security. Dedicated <strong style="color: rgba(255,255,255,0.8);">Indian mess</strong> facilities serve freshly prepared home-style meals, making your transition abroad feel warm, familiar, and completely stress-free.
+                University-managed hostels provide safe, comfortable accommodation with 24/7 security. Dedicated <strong style="color: #0f172a;">Indian mess</strong> facilities serve freshly prepared home-style meals, making your transition abroad feel warm, familiar, and completely stress-free.
             </p>
             <div style="display: flex; gap: 10px; margin-top: 1.2rem; flex-wrap: wrap;">
-                <span style="background: rgba(99,179,237,0.1); border: 1px solid rgba(99,179,237,0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; color: #63b3ed;">🛏 Furnished Rooms</span>
-                <span style="background: rgba(99,179,237,0.1); border: 1px solid rgba(99,179,237,0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; color: #63b3ed;">🍛 Indian Meals</span>
-                <span style="background: rgba(99,179,237,0.1); border: 1px solid rgba(99,179,237,0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; color: #63b3ed;">🔒 24/7 Security</span>
+                <span style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; color: #3b82f6;">🛏 Furnished Rooms</span>
+                <span style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; color: #3b82f6;">🍛 Indian Meals</span>
+                <span style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; color: #3b82f6;">🔒 24/7 Security</span>
             </div>
         `;
         reasonsGrid.appendChild(hostelCard);
@@ -816,7 +841,75 @@
         const waBtn = document.getElementById('whatsapp-btn');
         waBtn.href = `https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in ${country}. My name is:`;
     </script>
-    <script src="script.js?v=1.5"></script>
+    <!-- Global Quick Apply Modal (Footer) -->
+    <footer class="site-footer"
+        style="position: relative; overflow: hidden; padding-bottom: 2rem; padding-top: 4rem; margin-top: 4rem; background: transparent;">
+
+        <div class="footer-content-wrapper"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 5%;">
+            <div>
+                <div class="footer-logo-container" style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 1.5rem; gap: 10px;">
+                    <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img" style="width: 40px; height: 40px;">
+                    <div class="footer-logo-text-group" style="display: flex; flex-direction: column;">
+                        <span class="logo-text" style="color: var(--accent); font-weight: 800; font-size: 1.5rem; line-height: 1;">theadmitify</span>
+                        <span class="logo-tagline" style="color: var(--text-dim); font-size: 0.8rem; letter-spacing: 1px;">Global Education</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.95rem;">Empowering students to
+                    reach their peak potential through expert admission counseling.</p>
+                <div class="social-icons" style="display: flex; gap: 15px;">
+                    <a href="#"
+                        style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'"><i data-lucide="instagram"></i></a>
+                    <a href="#"
+                        style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'"><i data-lucide="facebook"></i></a>
+                    <a href="#"
+                        style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="index.html#about" style="color: var(--text-dim); text-decoration: none;">About Us</a></li>
+                    <li><a href="index.html#countries" style="color: var(--text-dim); text-decoration: none;">Study Abroad</a>
+                    </li>
+                    <li><a href="index.html#services" style="color: var(--text-dim); text-decoration: none;">Services</a></li>
+                    <li><a href="index.html#testimonials" style="color: var(--text-dim); text-decoration: none;">Testimonials</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Legal</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            style="border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; padding-left: 5%; padding-right: 5%;">
+            <p style="color: var(--text-dim); font-size: 0.9rem;">© 2026 theadmitify - Reaching Your Peak.</p>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Designed & Developed by <span
+                    style="color: var(--accent); font-weight: 600;">Aun khan</span></p>
+        </div>
+
+        <!-- Massive Typography at Bottom -->
+        <h1
+            style="font-size: 11vw; font-weight: 900; color: rgba(15, 23, 42, 0.03); line-height: 0.8; margin-top: 4rem; margin-bottom: -1rem; letter-spacing: -0.05em; text-align: center; overflow: hidden; white-space: nowrap; user-select: none;">
+            THE ADMITIFY</h1>
+    </footer>
+
+    <script src="script.js?v=1.6"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

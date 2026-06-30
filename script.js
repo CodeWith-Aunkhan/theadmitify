@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sheetData = {
     'Russia': {
       title: 'MBBS in Russia',
-      image: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/russia.jpg',
       duration: '6 Years',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
@@ -518,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Georgia': {
       title: 'MBBS in Georgia',
-      image: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/georgia.jpg',
       duration: '6 Years',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'America': {
       title: 'MBBS in America (Caribbean)',
-      image: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/america.jpg',
       duration: '5.5 Years',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Egypt': {
       title: 'MBBS in Egypt',
-      image: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/egypt.jpg',
       duration: '5 Years + 2 Years Internship',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Nepal': {
       title: 'MBBS in Nepal',
-      image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/nepal.jpg',
       duration: '5.5 Years',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Philippines': {
       title: 'MBBS in Philippines',
-      image: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/philippines.jpg',
       duration: '5.5 Years (BS + MD)',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
@@ -568,7 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Uzbekistan': {
       title: 'MBBS in Uzbekistan',
-      image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=600',
+      image: 'assets/uzbekistan.png',
       duration: '6 Years',
       medium: 'English Medium',
       eligibility: '50% PCB & NEET Qualified',
