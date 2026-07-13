@@ -77,8 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === modal) handleModalClose();
   });
 
-  // Connect to Web3Forms Backend (Highly stable, no redirects/popups)
-  const WEB3FORMS_ACCESS_KEY = "3c468695-9bb3-4f27-b321-5f2d5e06aa5c";
+  // Internal Backend Endpoint replacing Web3Forms
 
   // Reusable Toast Notification Generator
   function showNotification(message, type = 'success') {
@@ -123,34 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.innerHTML = "Processing Application...";
     submitBtn.style.opacity = "0.7";
 
-    // Dynamic Source page info
-    data.sourcePage = window.location.pathname.split("/").pop() || "index.html";
-    data.access_key = WEB3FORMS_ACCESS_KEY;
-    data.subject = `New Lead: ${data.name} for ${data.destination}`;
-
-    // If key is not set, simulate success for testing
-    if (WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
-      setTimeout(() => {
-        showNotification(successMsg, 'success');
-        form.reset();
-        sessionStorage.setItem('formSubmitted', 'true');
-        if (modalToClose) modalToClose.style.display = 'none';
-        
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-        submitBtn.style.opacity = "1";
-      }, 1000);
-      return;
-    }
+    // Format data for our local backend
+    const payload = {
+        name: data.name,
+        phone: data.phone,
+        email: data.email || '',
+        course: data.destination || '',
+        message: data.message || `Lead from ${window.location.pathname.split("/").pop() || "index.html"}`
+    };
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/submit-lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(payload)
       });
 
       const result = await response.json();
@@ -168,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error) {
       console.error("Submission Error:", error);
-      showNotification("Submission failed. Please try again.", 'error');
+      showNotification("Submission failed. Please try again later.", 'error');
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnText;

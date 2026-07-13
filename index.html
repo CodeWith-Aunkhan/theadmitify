@@ -338,9 +338,8 @@
         </div>
         <div class="team-grid">
             <div class="team-card">
-                <div class="team-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
-                        alt="Consultant">
+                <div class="team-icon-wrap">
+                    <span class="team-initials">RS</span>
                 </div>
                 <h4>Mr. Rajesh Sharma</h4>
                 <p>Senior Admission Head</p>
@@ -350,9 +349,8 @@
                 </div>
             </div>
             <div class="team-card">
-                <div class="team-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
-                        alt="Consultant">
+                <div class="team-icon-wrap">
+                    <span class="team-initials">PV</span>
                 </div>
                 <h4>Ms. Priya Verma</h4>
                 <p>Foreign Relations Expert</p>
@@ -362,9 +360,8 @@
                 </div>
             </div>
             <div class="team-card">
-                <div class="team-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
-                        alt="Consultant">
+                <div class="team-icon-wrap">
+                    <span class="team-initials">AP</span>
                 </div>
                 <h4>Dr. Amit Patel</h4>
                 <p>Medical Career Mentor</p>
@@ -613,58 +610,6 @@
         </div>
     </section>
 
-    <section class="map-section">
-        <div class="section-header">
-            <span class="hero-tagline">Global Presence</span>
-            <h2>Our Reach is Worldwide</h2>
-            <p style="color: var(--text-dim);">Connecting students to top-tier universities across the globe.</p>
-        </div>
-
-        <div class="map-wrapper">
-            <div class="map-container">
-                <!-- Animated Connection Paths -->
-                <svg class="map-connection-lines" viewBox="0 0 100 100" preserveAspectRatio="none"
-                    style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;">
-                    <defs>
-                        <linearGradient id="line-glow" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#2563eb" stop-opacity="0.2" />
-                            <stop offset="50%" stop-color="#fbbf24" stop-opacity="0.8" />
-                            <stop offset="100%" stop-color="#2563eb" stop-opacity="0.2" />
-                        </linearGradient>
-                    </defs>
-                    <path class="flight-path" d="M 68 45 Q 66 35, 65 25" />
-                    <path class="flight-path" d="M 68 45 Q 40 25, 15 35" />
-                    <path class="flight-path" d="M 68 45 Q 60 40, 52 45" />
-                    <path class="flight-path" d="M 68 45 Q 69 43, 70 42" />
-                    <path class="flight-path" d="M 68 45 Q 77 50, 85 52" />
-                    <path class="flight-path" d="M 68 45 Q 64 40, 60 35" />
-                </svg>
-
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-                    class="map-bg" alt="World Map">
-
-                <div class="marker russia">
-                    <span class="marker-label">RUSSIA</span>
-                </div>
-                <div class="marker america">
-                    <span class="marker-label">AMERICA</span>
-                </div>
-                <div class="marker egypt">
-                    <span class="marker-label">EGYPT</span>
-                </div>
-                <div class="marker nepal">
-                    <span class="marker-label">NEPAL</span>
-                </div>
-                <div class="marker philippines">
-                    <span class="marker-label">PHILIPPINES</span>
-                </div>
-                <div class="marker uzbekistan">
-                    <span class="marker-label">UZBEKISTAN</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="services" class="services-section">
         <div class="services-header">
             <h2 class="services-title">Our Services</h2>
@@ -741,10 +686,10 @@
     </div>
 
     <footer class="site-footer"
-        style="position: relative; overflow: hidden; padding-bottom: 2rem; padding-top: 2rem; margin-top: 2rem;">
+        style="position: relative; overflow: hidden; padding-bottom: 1rem; padding-top: 2rem; margin-top: 2rem;">
 
         <div class="footer-content-wrapper"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 5%;">
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 0; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 5%;">
             <div>
                 <div class="footer-logo-container" style="justify-content: flex-start; margin-bottom: 1.5rem;">
                     <img src="assets/logo.png" alt="TheAdmitify Logo" class="logo-img">
@@ -755,7 +700,7 @@
                 </div>
                 <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.95rem;">Empowering students to
                     reach their peak potential through expert admission counseling.</p>
-                <div class="social-icons" style="display: flex; gap: 15px;">
+                <div class="social-icons" style="display: flex; gap: 15px; margin-bottom: 2rem;">
                     <a href="#"
                         style="width: 40px; height: 40px; border-radius: 50%; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: transform 0.3s;"
                         onmouseover="this.style.transform='translateY(-5px)'"
@@ -769,6 +714,8 @@
                         onmouseover="this.style.transform='translateY(-5px)'"
                         onmouseout="this.style.transform='translateY(0)'"><i data-lucide="youtube"></i></a>
                 </div>
+                
+
             </div>
             <div>
                 <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Quick Links</h4>
@@ -782,25 +729,20 @@
                 </ul>
             </div>
             <div>
-                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Legal</h4>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
-                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a></li>
-                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a></li>
-                    <li><a href="#" style="color: var(--text-dim); text-decoration: none;">Refund Policy</a></li>
-                </ul>
+                <h4 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.2rem;">Legal & Credits</h4>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">Copyright © 2026 TheAdmitify.<br>All rights reserved.<br>Unauthorized use or reproduction of this content is strictly prohibited.</p>
+                    <div style="width: 30px; height: 2px; background: var(--accent); border-radius: 2px;"></div>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Designed & Developed by <br><span
+                            style="color: var(--accent); font-weight: 600; font-size: 1rem;">Oun Khan</span></p>
+                </div>
             </div>
         </div>
 
-        <div
-            style="border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; padding-left: 5%; padding-right: 5%;">
-            <p style="color: var(--text-dim); font-size: 0.9rem;">© 2026 theadmitify - Reaching Your Peak.</p>
-            <p style="color: var(--text-dim); font-size: 0.9rem;">Designed & Developed by <span
-                    style="color: var(--accent); font-weight: 600;">Aun khan</span></p>
-        </div>
 
         <!-- Massive Typography at Bottom -->
         <h1
-            style="font-size: 11vw; font-weight: 900; color: rgba(15, 23, 42, 0.03); line-height: 0.8; margin-top: 1rem; margin-bottom: -1rem; letter-spacing: -0.05em; text-align: center; overflow: hidden; white-space: nowrap; user-select: none;">
+            style="font-size: 11vw; font-weight: 900; color: rgba(15, 23, 42, 0.03); line-height: 0.8; margin-top: 0.5rem; margin-bottom: -1.5rem; letter-spacing: -0.05em; text-align: center; overflow: hidden; white-space: nowrap; user-select: none;">
             THE ADMITIFY</h1>
     </footer>
 
