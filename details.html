@@ -518,7 +518,7 @@
 
                     <div style="text-align: center; margin-top: 5px;">
                         <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 10px;">- OR -</div>
-                        <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in Russia"
+                        <a href="https://wa.me/919327195314?text=Hi, I want to apply for MBBS in Russia"
                             id="whatsapp-btn"
                             style="display: flex; align-items: center; justify-content: center; gap: 10px; color: #25D366; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid #25D366; padding: 12px; border-radius: 12px; transition: all 0.3s ease;">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="#25D366"
@@ -588,7 +588,7 @@
 
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to know more about MBBS abroad" class="whatsapp-float"
+    <a href="https://wa.me/919327195314?text=Hi, I want to know more about MBBS abroad" class="whatsapp-float"
         target="_blank">
         <svg viewBox="0 0 24 24" width="34" height="34" fill="white" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -611,37 +611,52 @@
                             Hassle-Free</span></p>
                 </div>
                 <form class="modal-form" id="global-apply-form">
-                    <div class="input-with-icon">
-                        <input type="text" placeholder="Student or Parent Name" required>
-                        <i data-lucide="user"></i>
+                    <!-- Progress Bar for Mobile Step-by-Step Form -->
+                    <div class="multi-step-progress mobile-only">
+                        <div class="step-progress-bar" id="stepProgressBar"></div>
                     </div>
-                    <div class="input-with-icon">
-                        <input type="tel" placeholder="Phone Number" required>
-                        <i data-lucide="phone"></i>
+
+                    <!-- Step 1 -->
+                    <div class="form-step active" data-step="1">
+                        <div class="input-with-icon">
+                            <input type="text" id="global-name" placeholder="Student or Parent Name" required
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
+                            <i data-lucide="user"></i>
+                        </div>
+                        <div class="input-with-icon">
+                            <input type="email" id="global-email" placeholder="Your Email ID" required>
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <button type="button" class="cta-button next-step-btn mobile-only"
+                            style="width: 100%; margin-top: 10px;">Next Step</button>
                     </div>
-                    <div class="input-with-icon">
-                        <select required>
-                            <option value="">Select Destination</option>
-                            <option value="Russia">Russia</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Kazakhstan">Kazakhstan</option>
-                            <option value="Uzbekistan">Uzbekistan</option>
-                            <option value="Egypt">Egypt</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <i data-lucide="map-pin"></i>
+
+                    <!-- Step 2 -->
+                    <div class="form-step" data-step="2">
+                        <div class="input-with-icon">
+                            <input type="tel" id="global-phone" placeholder="Phone Number" required
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div class="input-with-icon">
+                            <select id="global-destination" required>
+                                <option value="">Select Destination</option>
+                                <option value="Russia">Russia</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Kazakhstan">Kazakhstan</option>
+                                <option value="Uzbekistan">Uzbekistan</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="step-btn-group" style="display: flex; gap: 10px; margin-top: 10px;">
+                            <button type="button" class="cta-button prev-step-btn secondary-btn mobile-only"
+                                style="flex: 1; background: #e5e7eb; color: #4b5563; box-shadow: none;">Back</button>
+                            <button type="submit" class="cta-button submit-step-btn" style="flex: 2; width: 100%;">Apply
+                                Now</button>
+                        </div>
                     </div>
-                    <div class="input-with-icon">
-                        <select required>
-                            <option value="">Select Intake</option>
-                            <option value="Sept-2025">September 2025</option>
-                            <option value="Feb-2026">February 2026</option>
-                            <option value="Sept-2026">September 2026</option>
-                        </select>
-                        <i data-lucide="calendar"></i>
-                    </div>
-                    <button type="submit" class="cta-button submit-step-btn"
-                        style="width: 100%; margin-top: 10px;">Submit Application</button>
                     <p style="text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 10px;">Your
                         information is 100% secure with us.</p>
                 </form>
@@ -664,14 +679,7 @@
                         <i data-lucide="stethoscope" style="color: #fbbf24; width: 40px; height: 40px;"></i>
                     </div>
 
-                    <div class="avatar-group" style="justify-content: center;">
-                        <img src="assets/student1.jpg" alt="Student">
-                        <img src="assets/student2.jpg" alt="Student">
-                        <img src="assets/student3.jpg" alt="Student">
-                        <div
-                            style="width: 35px; height: 35px; border-radius: 50%; background: #fbbf24; border: 2px solid #6366f1; margin-left: -10px; display: flex; align-items: center; justify-content: center; color: #1f2937; font-size: 0.7rem; font-weight: 800;">
-                            500+</div>
-                    </div>
+
                     <span style="font-size: 0.85rem; color: #fff; font-weight: 600; margin-top: 5px;">Trusted by 500+
                         Parents & Students</span>
                 </div>
@@ -889,7 +897,7 @@
 
         // Update WhatsApp link dynamic message
         const waBtn = document.getElementById('whatsapp-btn');
-        waBtn.href = `https://wa.me/91XXXXXXXXXX?text=Hi, I want to apply for MBBS in ${country}. My name is:`;
+        waBtn.href = `https://wa.me/919327195314?text=Hi, I want to apply for MBBS in ${country}. My name is:`;
     </script>
     <!-- Global Quick Apply Modal (Footer) -->
     <footer class="site-footer"

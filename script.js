@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle Global Form
   if (globalForm) {
     globalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
       const name = document.getElementById('global-name').value.trim();
       const phone = document.getElementById('global-phone').value.trim();
       const email = document.getElementById('global-email').value.trim();
@@ -175,17 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Validation
       if (!/^[a-zA-Z\s]{2,}$/.test(name)) {
-        e.preventDefault();
         showNotification('Please enter a valid name (letters only).', 'error');
         return;
       }
       if (!/^[0-9]{10}$/.test(phone)) {
-        e.preventDefault();
         showNotification('Please enter a valid 10-digit phone number.', 'error');
         return;
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        e.preventDefault();
         showNotification('Please enter a valid email address.', 'error');
         return;
       }
@@ -206,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const detailsForm = document.getElementById('details-form');
   if (detailsForm) {
     detailsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
       const name = document.getElementById('student-name').value.trim();
       const phone = document.getElementById('student-phone').value.trim();
       const email = document.getElementById('student-email').value.trim();
@@ -213,17 +212,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Validation
       if (!/^[a-zA-Z\s]{2,}$/.test(name)) {
-        e.preventDefault();
         showNotification('Please enter a valid name (letters only).', 'error');
         return;
       }
       if (!/^[0-9]{10}$/.test(phone)) {
-        e.preventDefault();
         showNotification('Please enter a valid 10-digit phone number.', 'error');
         return;
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        e.preventDefault();
         showNotification('Please enter a valid email address.', 'error');
         return;
       }
